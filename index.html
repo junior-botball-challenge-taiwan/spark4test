@@ -39,10 +39,8 @@
             text-shadow: 0 0 8px #bf00ff, 0 0 15px #bf00ff;
         }
 
-        /* --- 下拉選單穩定性修正 --- */
+        /* 下拉選單穩定性修正 */
         .dropdown { position: relative; }
-        
-        /* 當滑鼠在父層或選單本身時都保持顯示 */
         .dropdown:hover .dropdown-menu,
         .dropdown-menu.show { 
             display: block; 
@@ -58,17 +56,16 @@
             box-shadow: 0 0 20px rgba(191, 0, 255, 0.4);
             position: absolute;
             right: 0;
-            top: 100%; /* 緊貼上方 */
+            top: 100%;
             width: 180px;
             z-index: 200;
             transition: opacity 0.2s ease;
         }
 
-        /* 關鍵：增加一個隱形的橋樑填補間隙 */
         .dropdown-menu::before {
             content: "";
             position: absolute;
-            top: -20px; /* 向上延伸 20px 覆蓋間隙 */
+            top: -20px;
             left: 0;
             right: 0;
             height: 20px;
@@ -94,6 +91,7 @@
             font-size: 13px;
             font-weight: 700;
             letter-spacing: 1px;
+            text-decoration: none; /* 移除超連結底線 */
         }
         .btn-purple { background: #2d004d; border: 1px solid #bf00ff; box-shadow: 0 0 10px #bf00ff; }
         .btn-gold { background: #4d4500; border: 1px solid #FFD700; box-shadow: 0 0 10px #FFD700; color: #FFD700; }
@@ -134,11 +132,11 @@
 <body>
 
     <div class="float-container">
-        <a href="#" class="float-btn btn-purple rounded-l-lg text-white">前往報名</a>
-        <a href="#" class="float-btn btn-black rounded-l-lg text-white">題庫專區</a>
-        <a href="#" class="float-btn btn-gold rounded-l-lg">活動簡章</a>
-        <a href="#" class="float-btn btn-purple rounded-l-lg text-white">匯款完成表單</a>
-        <a href="#" class="float-btn btn-gold rounded-l-lg">加入群組</a>
+        <a href="請填入報名網址" target="_blank" class="float-btn btn-purple rounded-l-lg text-white">前往報名</a>
+        <a href="請填入題庫網址" target="_blank" class="float-btn btn-black rounded-l-lg text-white">題庫專區</a>
+        <a href="請填入活動簡章網址" target="_blank" class="float-btn btn-gold rounded-l-lg">活動簡章</a>
+        <a href="請填入匯款表單網址" target="_blank" class="float-btn btn-purple rounded-l-lg text-white">匯款完成表單</a>
+        <a href="請填入LINE群組網址" target="_blank" class="float-btn btn-gold rounded-l-lg">加入群組</a>
     </div>
 
     <nav class="fixed w-full top-0 z-[1100] bg-blue-950/95 backdrop-blur-md border-b border-blue-800/50 shadow-lg shadow-blue-900/20">
@@ -168,7 +166,6 @@
     <section id="home" class="hero-section p-0 overflow-hidden">
         <img src="unnamed.jpg" alt="Background" class="hero-img-full">
         <div class="hero-overlay"></div>
-
         <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
             <div class="max-w-2xl bg-blue-950/20 p-8 rounded-2xl backdrop-blur-sm border border-white/10">
                 <h1 class="text-5xl md:text-7xl font-bold mb-4 neon-purple tracking-tighter leading-tight">
@@ -249,7 +246,6 @@
             }
         }
 
-        // --- JavaScript 修復選單閃爍邏輯 ---
         document.addEventListener('DOMContentLoaded', function() {
             const dropdown = document.getElementById('competition-dropdown');
             const menu = dropdown.querySelector('.dropdown-menu');
@@ -261,7 +257,6 @@
             });
 
             dropdown.addEventListener('mouseleave', function() {
-                // 延遲 300 毫秒才關閉，確保滑鼠有足夠時間移動到選單內容
                 timer = setTimeout(function() {
                     menu.classList.remove('show');
                 }, 300);
