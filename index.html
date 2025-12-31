@@ -102,7 +102,7 @@
         .hero-section {
             position: relative;
             width: 100%;
-            height: 70vh; 
+            height: 85vh; /* 稍微增加高度以容納更多資訊 */
             display: flex;
             align-items: center;
             background: #000;
@@ -125,6 +125,15 @@
                         linear-gradient(90deg, rgba(2, 5, 16, 0.8) 0%, rgba(2, 5, 16, 0.2) 100%);
             z-index: 1;
         }
+
+        /* 資訊區塊樣式 */
+        .info-box {
+            background: rgba(191, 0, 255, 0.1);
+            border-left: 3px solid #bf00ff;
+            padding: 10px 20px;
+            margin-top: 25px;
+            backdrop-blur: 5px;
+        }
         
         section { padding-top: 80px; padding-bottom: 80px; }
     </style>
@@ -133,14 +142,10 @@
 
     <div class="float-container">
         <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCWdu1iHO9Pug2hOlTShbwxB-yet4KcqtIWsM9kNbu99OMbA/viewform" target="_blank" class="float-btn btn-purple rounded-l-lg text-white">前往報名</a>
-        
         <a href="https://docs.google.com/document/d/1isL4PLwy8q3PvW-gpLOKPoVwIaVrX9-dNvwRcoZbD04/edit?tab=t.24zxd1dnbc7u#heading=h.enjhjnwujonh" target="_blank" class="float-btn btn-black rounded-l-lg text-white">題庫專區</a>
-        
         <a href="https://drive.google.com/file/d/1VudJRDZ_wad32Aj7AVu6eWKcGRhvlxkp/view" target="_blank" class="float-btn btn-gold rounded-l-lg">報名簡章</a>
-        
-        <a href="#" target="_blank" class="float-btn btn-purple rounded-l-lg text-white">匯款完成表單</a>
-        
-        <a href="#" target="_blank" class="float-btn btn-gold rounded-l-lg">加入群組</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxvytPSXD5RrHeSOaig1WIfgM60Aj111frdGtY8n-epb0Rjw/viewform" target="_blank" class="float-btn btn-purple rounded-l-lg text-white">匯款完成表單</a>
+        <a href="https://line.me/ti/g2/4KLjDA6pPbE8BBsQUPSQS2M3rLRNPWO0PVtz9A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="float-btn btn-gold rounded-l-lg">加入群組</a>
     </div>
 
     <nav class="fixed w-full top-0 z-[1100] bg-blue-950/95 backdrop-blur-md border-b border-blue-800/50 shadow-lg shadow-blue-900/20">
@@ -170,13 +175,28 @@
         <img src="unnamed.jpg" alt="Background" class="hero-img-full">
         <div class="hero-overlay"></div>
         <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
-            <div class="max-w-2xl bg-blue-950/20 p-8 rounded-2xl backdrop-blur-sm border border-white/10">
+            <div class="max-w-3xl bg-blue-950/20 p-8 md:p-12 rounded-2xl backdrop-blur-sm border border-white/10">
                 <h1 class="text-5xl md:text-7xl font-bold mb-4 neon-purple tracking-tighter leading-tight">
                     Junior<br>Botball Challenge
                 </h1>
-                <div class="mt-6 space-y-2">
+                
+                <div class="mt-4">
                     <p class="text-xl md:text-3xl font-bold gold-text uppercase">2026 STEM 科技教育競賽</p>
-                    <p class="text-lg md:text-xl text-blue-100 font-light italic">讓台灣的科技教育與國際接軌</p>
+                    <p class="text-lg md:text-xl text-blue-100 font-light italic mt-1">讓台灣的科技教育與國際接軌</p>
+                </div>
+
+                <div class="info-box animate-pulse-slow">
+                    <div class="flex items-start mb-2">
+                        <span class="text-purple-400 font-bold mr-3">[ TIME ]</span>
+                        <p class="text-white text-lg md:text-xl font-medium">2026年3月8日 (星期日)</p>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-purple-400 font-bold mr-3">[ PLACE ]</span>
+                        <div>
+                            <p class="text-white text-lg md:text-xl font-medium">葳格國際會議中心</p>
+                            <p class="text-gray-400 text-sm mt-1">台中市北屯區軍福十八路328號</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
