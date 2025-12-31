@@ -39,18 +39,21 @@
             text-shadow: 0 0 8px #bf00ff, 0 0 15px #bf00ff;
         }
 
-        /* 下拉選單 */
-        .dropdown:hover .dropdown-menu { display: block; }
+        /* 下拉選單優化：增加 padding 緩衝確保滑鼠移動時選單不消失 */
+        .dropdown { position: relative; padding-bottom: 10px; margin-bottom: -10px; }
+        .dropdown:hover .dropdown-menu { display: block; opacity: 1; pointer-events: auto; }
         .dropdown-menu {
             display: none;
-            background-color: rgba(0, 30, 60, 0.95);
+            opacity: 0;
+            background-color: rgba(0, 30, 60, 0.98);
             border: 1px solid #bf00ff;
-            box-shadow: 0 0 15px rgba(191, 0, 255, 0.3);
+            box-shadow: 0 0 20px rgba(191, 0, 255, 0.4);
             position: absolute;
             right: 0;
             top: 100%;
-            width: 160px;
+            width: 180px;
             z-index: 200;
+            transition: opacity 0.2s ease;
         }
 
         /* 右側懸浮按鈕 */
@@ -78,28 +81,26 @@
         .btn-black { background: #1a1a1a; border: 1px solid #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.3); }
         .float-btn:hover { transform: translateX(-10px); box-shadow: 0 0 20px currentColor; }
 
-        /* 首頁底圖區：設定為優雅的橫長方形 (70% 螢幕高度) */
+        /* 首頁底圖區 */
         .hero-section {
             position: relative;
             width: 100%;
-            height: 70vh; /* 調整為長方形比例 */
+            height: 70vh; 
             display: flex;
             align-items: center;
             background: #000;
-            margin-top: 80px; /* 給導覽列空間 */
+            margin-top: 80px;
         }
 
-        /* 圖片處理：若隱若現效果 */
         .hero-img-full {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* 填滿長方形且不變形 */
+            object-fit: cover;
             object-position: center;
-            opacity: 0.5; /* 若隱若現：50% 透明度 */
+            opacity: 0.5;
             z-index: 0;
         }
 
-        /* 漸層遮罩：讓圖片底端消失在背景中 */
         .hero-overlay {
             position: absolute;
             inset: 0;
@@ -125,7 +126,7 @@
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-4 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
                 <img src="jbc-logo.png" alt="Logo" class="h-14 w-auto logo-original-glow">
-                <span class="text-xl font-bold tracking-tight text-white uppercase ml-2">Junior Botball Taiwan</span>
+                <span class="text-lg md:text-xl font-bold tracking-tight text-white uppercase ml-2">Junior Botball Challenge Taiwan</span>
             </div>
             
             <div class="hidden md:flex space-x-8 text-sm font-medium tracking-widest uppercase items-center">
@@ -134,11 +135,11 @@
                 <a onclick="scrollToSection('rules')" class="nav-link">競賽規則</a>
                 <a onclick="scrollToSection('register')" class="nav-link">報名資訊</a>
                 
-                <div class="relative dropdown">
+                <div class="relative dropdown group">
                     <span class="nav-link">各年度比賽 ▼</span>
                     <div class="dropdown-menu mt-2 py-2">
-                        <a href="#" class="block px-4 py-3 text-xs hover:bg-blue-800/50 transition">2024 年度比賽</a>
-                        <a href="#" class="block px-4 py-3 text-xs hover:bg-blue-800/50 transition border-t border-blue-900/30">2025 年度比賽</a>
+                        <a href="#" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition">2024 年度比賽</a>
+                        <a href="#" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition border-t border-blue-900/30">2025 年度比賽</a>
                     </div>
                 </div>
             </div>
