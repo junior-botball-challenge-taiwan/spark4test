@@ -120,6 +120,16 @@
             z-index: 50;
             display: block;
         }
+
+        /* 圖片浮起特效 */
+        .history-card-img {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .history-card:hover .history-card-img {
+            transform: scale(1.1) translateY(-10px);
+            opacity: 1 !important;
+            filter: drop-shadow(0 0 15px rgba(191, 0, 255, 0.6));
+        }
     </style>
 </head>
 <body>
@@ -243,10 +253,10 @@
             </div>
             
             <div class="grid md:grid-cols-2 gap-10">
-                <div class="relative overflow-hidden rounded-2xl border border-purple-500/30 bg-gray-900/40 backdrop-blur-md">
-                    <div class="aspect-video bg-purple-950/50 flex items-center justify-center overflow-hidden">
-                        <img src="2025-recap.jpg" alt="2025 Recap" class="w-full h-full object-cover opacity-60">
-                        <div class="absolute inset-0 flex items-center justify-center">
+                <div class="history-card relative overflow-visible rounded-2xl border border-purple-500/30 bg-gray-900/40 backdrop-blur-md">
+                    <div class="aspect-video bg-purple-950/50 flex items-center justify-center overflow-hidden rounded-t-2xl">
+                        <img src="2025-recap.jpg" alt="2025 Recap" class="history-card-img w-full h-full object-cover opacity-60">
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <span class="text-white font-bold tracking-widest text-xl bg-black/40 px-4 py-2 rounded border border-purple-500">2025: 突破自我</span>
                         </div>
                     </div>
@@ -266,10 +276,10 @@
                     </div>
                 </div>
 
-                <div class="relative overflow-hidden rounded-2xl border border-blue-500/30 bg-gray-900/40 backdrop-blur-md">
-                    <div class="aspect-video bg-blue-950/50 flex items-center justify-center overflow-hidden">
-                        <img src="2024-recap.jpg" alt="2024 Recap" class="w-full h-full object-cover opacity-60">
-                        <div class="absolute inset-0 flex items-center justify-center">
+                <div class="history-card relative overflow-visible rounded-2xl border border-blue-500/30 bg-gray-900/40 backdrop-blur-md">
+                    <div class="aspect-video bg-blue-950/50 flex items-center justify-center overflow-hidden rounded-t-2xl">
+                        <img src="2024-recap.jpg" alt="2024 Recap" class="history-card-img w-full h-full object-cover opacity-60">
+                        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
                             <span class="text-white font-bold tracking-widest text-xl bg-black/40 px-4 py-2 rounded border border-blue-500">2024: 科技啟蒙</span>
                         </div>
                     </div>
