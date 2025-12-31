@@ -39,7 +39,7 @@
             text-shadow: 0 0 8px #bf00ff, 0 0 15px #bf00ff;
         }
 
-        /* 下拉選單穩定性 */
+        /* 下拉選單 */
         .dropdown { position: relative; }
         .dropdown:hover .dropdown-menu,
         .dropdown-menu.show { 
@@ -62,17 +62,7 @@
             transition: opacity 0.2s ease;
         }
 
-        .dropdown-menu::before {
-            content: "";
-            position: absolute;
-            top: -20px;
-            left: 0;
-            right: 0;
-            height: 20px;
-            background: transparent;
-        }
-
-        /* 右側懸浮按鈕區 */
+        /* 右側懸浮按鈕 */
         .float-container {
             position: fixed;
             right: 0;
@@ -98,7 +88,7 @@
         .btn-black { background: #1a1a1a; border: 1px solid #ffffff; box-shadow: 0 0 10px rgba(255,255,255,0.3); }
         .float-btn:hover { transform: translateX(-10px); box-shadow: 0 0 20px currentColor; }
 
-        /* 首頁資訊區樣式 */
+        /* 首頁區塊 */
         .hero-section {
             position: relative;
             width: 100%;
@@ -144,6 +134,13 @@
         .rule-card:hover { border-color: #bf00ff; background: rgba(15, 23, 42, 0.9); }
         
         section { padding-top: 80px; padding-bottom: 80px; }
+
+        /* 確保按鈕在最上層 */
+        .clickable-btn {
+            position: relative;
+            z-index: 50;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -169,7 +166,7 @@
                 <a onclick="scrollToSection('rules')" class="nav-link">競賽規則</a>
                 <a onclick="scrollToSection('history')" class="nav-link">歷屆賽事回顧</a>
                 
-                <div class="relative dropdown group" id="competition-dropdown">
+                <div class="relative dropdown group">
                     <span class="nav-link">快速連結 ▼</span>
                     <div class="dropdown-menu py-2">
                         <a href="https://www.youtube.com/@Spark_Taiwan" target="_blank" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition">YouTube 頻道</a>
@@ -283,9 +280,9 @@
             </div>
             
             <div class="grid md:grid-cols-2 gap-10">
-                <div class="group relative overflow-hidden rounded-2xl border border-purple-500/30 bg-gray-900/40 backdrop-blur-md">
+                <div class="relative overflow-hidden rounded-2xl border border-purple-500/30 bg-gray-900/40 backdrop-blur-md">
                     <div class="aspect-video bg-purple-950/50 flex items-center justify-center overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" alt="2025 Recap" class="w-full h-full object-cover transition duration-500 group-hover:scale-110 opacity-60">
+                        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800" alt="2025 Recap" class="w-full h-full object-cover opacity-60">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <span class="text-white font-bold tracking-widest text-xl bg-black/40 px-4 py-2 rounded border border-purple-500">2025: 突破自我</span>
                         </div>
@@ -297,18 +294,18 @@
                         </div>
                         <p class="text-gray-400 text-sm mb-6 leading-relaxed">
                             <strong class="text-purple-400">【夢想啟航，進軍世界】</strong><br>
-                            在葳格國際會議中心的璀璨燈光下，超過百支隊伍挑戰極限。我們見證了學生如何在壓力下冷靜修正程式，完成高難度的道具搬運。這一屆，多支優秀隊伍成功獲得「未來工程師」國際認證！
+                            在葳格國際會議中心的璀璨燈光下，超過百支隊伍挑戰極限。我們見證了學生如何在壓力下冷靜修正程式，完成高難度的道具搬運。
                         </p>
                         <div class="flex space-x-4">
-                            <a href="https://www.facebook.com/watch/?v=1060979716010685" target="_blank" class="flex-1 text-center py-2 bg-transparent border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-600 hover:text-white transition text-xs font-bold">觀看紀錄長片 (FB)</a>
-                            <a href="https://www.youtube.com/@Spark_Taiwan" target="_blank" class="flex-1 text-center py-2 bg-purple-900/30 text-white rounded-lg hover:bg-purple-800 transition text-xs font-bold">YouTube 精華頻道</a>
+                            <a href="https://www.facebook.com/watch/?v=1060979716010685" target="_blank" class="clickable-btn flex-1 text-center py-2 bg-transparent border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-600 hover:text-white transition text-xs font-bold">觀看紀錄長片 (FB)</a>
+                            <a href="https://www.youtube.com/@Spark_Taiwan" target="_blank" class="clickable-btn flex-1 text-center py-2 bg-purple-900/30 text-white rounded-lg hover:bg-purple-800 transition text-xs font-bold">YouTube 精華頻道</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="group relative overflow-hidden rounded-2xl border border-blue-500/30 bg-gray-900/40 backdrop-blur-md">
+                <div class="relative overflow-hidden rounded-2xl border border-blue-500/30 bg-gray-900/40 backdrop-blur-md">
                     <div class="aspect-video bg-blue-950/50 flex items-center justify-center overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800" alt="2024 Recap" class="w-full h-full object-cover transition duration-500 group-hover:scale-110 opacity-60">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800" alt="2024 Recap" class="w-full h-full object-cover opacity-60">
                         <div class="absolute inset-0 flex items-center justify-center">
                             <span class="text-white font-bold tracking-widest text-xl bg-black/40 px-4 py-2 rounded border border-blue-500">2024: 科技啟蒙</span>
                         </div>
@@ -320,11 +317,11 @@
                         </div>
                         <p class="text-gray-400 text-sm mb-6 leading-relaxed">
                             <strong class="text-blue-400">【紮根創意，無限可能】</strong><br>
-                            作為許多選手的第一場機器人賽事，2024 年重點在於啟發與實作。從小選手對樂高結構的初次摸索，到成功寫出第一行指令，每一個成功的瞬間都被記錄在鏡頭下。快點擊下方影片，重溫那份最初的感動！
+                            作為許多選手的第一場機器人賽事，2024 年重點在於啟發與實作。每一場賽事都是孩子成長的足跡。快點擊下方影片，重溫那份最初的熱血！
                         </p>
-                        <div class="flex space-x-4">
-                            <a href="https://www.youtube.com/watch?v=JrTGKeoTHWk" target="_blank" class="flex-1 text-center py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition text-xs font-bold shadow-lg shadow-blue-500/20">🔥 2024 精彩影片回顧</a>
-                            <a href="https://www.facebook.com/search/top?q=積動城市樂高機器人教室" target="_blank" class="flex-1 text-center py-2 bg-blue-900/30 text-white rounded-lg hover:bg-blue-800 transition text-xs font-bold">粉專賽事報導</a>
+                        <div class="flex space-x-4 relative z-50">
+                            <a href="https://www.youtube.com/watch?v=JrTGKeoTHWk" target="_blank" class="clickable-btn flex-1 text-center py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition text-xs font-bold shadow-lg shadow-blue-500/20">🔥 2024 精彩影片回顧</a>
+                            <a href="https://www.facebook.com/search/top?q=積動城市樂高機器人教室" target="_blank" class="clickable-btn flex-1 text-center py-2 bg-blue-900/30 text-white rounded-lg hover:bg-blue-800 transition text-xs font-bold">粉專賽事報導</a>
                         </div>
                     </div>
                 </div>
@@ -353,14 +350,12 @@
                 window.history.pushState("", "", "/");
             }
         }
-
         document.addEventListener('DOMContentLoaded', function() {
-            const dropdown = document.getElementById('competition-dropdown');
-            const menu = dropdown.querySelector('.dropdown-menu');
+            const dropdown = document.querySelector('.dropdown');
+            const menu = document.querySelector('.dropdown-menu');
             let timer;
-            dropdown.addEventListener('mouseenter', function() { clearTimeout(timer); menu.classList.add('show'); });
-            dropdown.addEventListener('mouseleave', function() { timer = setTimeout(function() { menu.classList.remove('show'); }, 300); });
-            menu.addEventListener('mouseenter', function() { clearTimeout(timer); });
+            dropdown.addEventListener('mouseenter', () => { clearTimeout(timer); menu.style.display = 'block'; menu.style.opacity = '1'; });
+            dropdown.addEventListener('mouseleave', () => { timer = setTimeout(() => { menu.style.display = 'none'; menu.style.opacity = '0'; }, 300); });
         });
     </script>
 </body>
