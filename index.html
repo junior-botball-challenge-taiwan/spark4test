@@ -145,13 +145,12 @@
     text-align: center;
     background: transparent;
 }
-      /* 讓聯絡我們的三個框框水平置中 */
-.contact-flex-container {
-    display: flex;
-    justify-content: center; /* 水平置中 */
-    align-items: center;     /* 垂直置中 */
-    gap: 2rem;               /* 框框之間的間距 */
-    flex-wrap: wrap;         /* 手機版自動換行 */
+ /* 這是容器，專門用來裝那三個 Facebook, IG, Threads 框框 */
+.contact-container {
+    display: flex;         /* 啟用彈性佈局 */
+    justify-content: center; /* 關鍵：讓內容水平置中 */
+    gap: 30px;             /* 框框之間的間距 */
+    flex-wrap: wrap;       /* 手機版會自動換行 */
 }
 
 /* 社群卡片容器 */
