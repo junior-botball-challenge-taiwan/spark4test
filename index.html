@@ -139,82 +139,101 @@
         transform: translateY(-25px); /* 向上漂浮的幅度 */
     }
 }
-/* 1. 聯絡我們整體容器 */
-#contact-section {
-    padding: 60px 20px;
-    background: #05050a; /* 深色背景 */
+/* 1. 聯絡我們區塊背景與間距 */
+.contact-section {
+    padding: 80px 20px;
+    background-color: #05050a; /* 深色背景符合 JBC 風格 */
     text-align: center;
-    color: white;
 }
 
-/* 2. 標題樣式優化 */
-#contact-section h2 {
-    font-size: 2rem;
-    margin-bottom: 40px;
-    letter-spacing: 2px;
+/* 2. 標題置中 */
+.contact-section .section-title {
     color: #ffffff;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    letter-spacing: 3px;
 }
 
-/* 3. 社群按鈕包裝容器 (關鍵修正) */
+/* 3. 社群容器：解決擠在左邊的關鍵 */
 .social-container {
     display: flex;
     justify-content: center; /* 水平置中 */
     align-items: center;
-    gap: 30px;               /* 按鈕間距 */
+    gap: 40px;               /* 卡片之間的間距 */
     flex-wrap: wrap;         /* 手機版自動換行 */
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;          /* 容器本身水平置中 */
 }
 
-/* 4. 單個社群按鈕樣式 (對應您的截圖風格) */
-.social-box {
-    width: 120px;
-    padding: 20px 10px;
+/* 4. 社群卡片基礎樣式 */
+.social-card {
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+/* 5. 卡片內部框線與排版 */
+.card-inner {
+    width: 140px;
+    padding: 25px 15px;
     background: rgba(255, 255, 255, 0.05);
     border: 2px solid #00ffff; /* 預設螢光藍邊框 */
-    border-radius: 12px;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    transition: all 0.3s ease;
 }
 
-/* 5. 針對不同社群平台給予特定邊框顏色 (如截圖所示) */
-.social-box.facebook { border-color: #00ffff; }
-.social-box.instagram { border-color: #ff00ff; } /* 桃紅色邊框 */
-.social-box.threads { border-color: #00ffff; }
+/* 6. 分別設定 Facebook, Instagram, Threads 的邊框顏色 */
+/* 根據您的 HTML 順序對應 nth-child */
+.social-card:nth-child(1) .card-inner { border-color: #00ffff; } /* FB: 藍色 */
+.social-card:nth-child(2) .card-inner { border-color: #ff00ff; } /* IG: 桃紅 */
+.social-card:nth-child(3) .card-inner { border-color: #00ffff; } /* Threads: 藍色 */
 
-/* 6. 觸碰回饋效果 */
-.social-box:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-    background: rgba(0, 255, 255, 0.1);
+/* 7. 圖示盒子 */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.social-box img {
-    width: 50px;
-    height: 50px;
+.social-icon {
+    width: 100%;
+    height: auto;
     object-fit: contain;
 }
 
-.social-box span {
-    color: white;
-    font-size: 0.8rem;
+/* 8. 文字樣式 */
+.card-inner span {
+    color: #ffffff;
     font-weight: bold;
-    text-transform: uppercase;
+    font-size: 1rem;
     letter-spacing: 1px;
 }
 
-/* 7. 響應式微調 */
-@media (max-width: 600px) {
+/* 9. 觸碰回饋效果 */
+.social-card:hover .card-inner {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+}
+
+/* 特殊處理 IG 的 Hover 陰影為桃紅色 */
+.social-card:nth-child(2):hover .card-inner {
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+}
+
+/* 10. 響應式：手機版縮小間距 */
+@media (max-width: 768px) {
     .social-container {
-        gap: 15px;
+        gap: 20px;
     }
-    .social-box {
-        width: 100px;
+    .card-inner {
+        width: 120px;
+        padding: 20px 10px;
     }
 }
     </style>
