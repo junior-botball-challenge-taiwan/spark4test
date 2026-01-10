@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JBC 國際賽事 | SPARK 臺灣智能程式科技教育推廣協會</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+  /* --- 國際賽頁面全域設定 --- */
+html {
+    scroll-behavior: smooth; /* 點擊導覽列會平滑滾動 */
+}
+
+.international-page {
+    background-color: #05050a;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- 1. 專屬導覽列 --- */
+.sub-navbar {
+    position: sticky;
+    top: 0;
+    background: rgba(10, 10, 20, 0.95);
+    border-bottom: 1px solid #00ffff;
+    padding: 15px 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.sub-navbar .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.back-home {
+    color: #00ffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.sub-navbar .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.sub-navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: 0.3s;
+    position: relative;
+}
+
+.sub-navbar .nav-links a:hover {
+    color: #ff00ff;
+    text-shadow: 0 0 10px #ff00ff;
+}
+
+/* --- 2. 區塊佈局 --- */
+.page-header {
+    text-align: center;
+    padding: 80px 20px 40px;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #05050a 100%);
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    background: linear-gradient(to right, #00ffff, #ff00ff);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 10px;
+}
+
+.country-section {
+    padding: 80px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.country-section.alt-bg {
+    background: rgba(255, 255, 255, 0.02); /* 讓奧地利場背景稍微不同 */
+}
+
+.content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 圖文互換 (電腦版) */
+.content-wrapper.reverse {
+    flex-direction: row-reverse;
+}
+
+/* 文字區域樣式 */
+.text-content {
+    flex: 1;
+}
+
+.country-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.country-title span {
+    display: block;
+    font-size: 1rem;
+    color: #00ffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.register-btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #00ffff, #0088ff);
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.register-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+}
+
+/* --- 3. 核心特效：國旗色流水燈 + 破框 (沿用並修改自 Enjoy AI) --- */
+.photo-frame-wrapper {
+    flex: 1;
+    position: relative;
+    max-width: 500px;
+    aspect-ratio: 4 / 3; /* 設定相框比例 */
+    border-radius: 20px;
+    padding: 5px; /* 流水燈寬度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px; /* 3D 深度 */
+}
+
+/* 流水燈動畫定義 */
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.flow-light-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    animation: rotateBorder 3s linear infinite;
+    z-index: 0;
+}
+
+/* 遮罩層 (讓中間變黑，只露出邊框) */
+.mask-layer {
+    position: absolute;
+    inset: 5px; /* 這裡要跟 padding 一樣 */
+    background: #05050a; 
+    border-radius: 16px;
+    z-index: 1;
+}
+
+@keyframes rotateBorder {
+    to { --angle: 360deg; }
+}
+
+/* --- 各國國旗配色 (Conic Gradients) --- */
+
+/* 🇹🇭 泰國：紅白藍白紅 */
+.flag-border-thailand .flow-light-bg {
+    background: conic-gradient(from var(--angle), 
+        #ED1C24, #FFFFFF, #241D4F, #FFFFFF, #ED1C24, #ED1C24);
+}
+
+/* 🇦🇹 奧地利：紅白紅 */
+.flag-border-austria .flow-light-bg {
+    background: conic-gradient(from var(--angle), 
+        #ED2939, #FFFFFF, #ED2939, #ED2939);
+}
+
+/* 🇺🇸 美國：藍白紅 (星條旗感) */
+.flag-border-usa .flow-light-bg {
+    background: conic-gradient(from var(--angle), 
+        #002868, #FFFFFF, #BF0A30, #002868);
+}
+
+/* --- 破框浮出特效 --- */
+.photo-container {
+    position: relative;
+    width: 92%;
+    height: 92%;
+    z-index: 2;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.main-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    filter: brightness(0.9);
+    transition: 0.5s;
+}
+
+/* Hover 觸發特效 */
+.photo-frame-wrapper:hover .photo-container {
+    transform: translateZ(60px) scale(1.05) translateY(-15px) rotateX(5deg);
+}
+
+.photo-frame-wrapper:hover .main-photo {
+    filter: brightness(1.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* --- 響應式調整 --- */
+@media (max-width: 768px) {
+    .content-wrapper, .content-wrapper.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .sub-navbar .nav-links {
+        display: none; /* 手機版可能需要漢堡選單，暫時隱藏 */
+    }
+    
+    .photo-frame-wrapper {
+        width: 100%;
+    }
+}
+  </style>
+</head>
+<body class="international-page">
+
+    <nav class="sub-navbar">
+        <div class="nav-container">
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> 回首頁</a>
+            <ul class="nav-links">
+                <li><a href="#thailand">🇹🇭 泰國場</a></li>
+                <li><a href="#austria">🇦🇹 歐洲場 (奧地利)</a></li>
+                <li><a href="#usa">🇺🇸 美國場</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>JBC 2026 GLOBAL EVENTS</h1>
+        <p>跟著 SPARK 走向世界，挑戰頂尖好手</p>
+    </header>
+
+    <section id="thailand" class="country-section">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="photo-frame-wrapper flag-border-thailand">
+                    <div class="flow-light-bg"></div> <div class="mask-layer"></div>    <div class="photo-container">
+                        <img src="path-to-thailand-image.jpg" alt="JBC Thailand" class="main-photo">
+                    </div>
+                </div>
+                
+                <div class="text-content">
+                    <h2 class="country-title"><span>Thailand</span> 亞洲錦標賽</h2>
+                    <div class="desc-placeholder">
+                        <p>（此處預留給泰國場的簡介內容...等待資料輸入）</p>
+                    </div>
+                    <a href="#" class="register-btn">立即報名泰國場</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="austria" class="country-section alt-bg">
+        <div class="container">
+            <div class="content-wrapper reverse"> <div class="photo-frame-wrapper flag-border-austria">
+                    <div class="flow-light-bg"></div>
+                    <div class="mask-layer"></div>
+                    <div class="photo-container">
+                        <img src="path-to-austria-image.jpg" alt="JBC Austria" class="main-photo">
+                    </div>
+                </div>
+
+                <div class="text-content">
+                    <h2 class="country-title"><span>Austria</span> 歐洲公開賽</h2>
+                    <div class="desc-placeholder">
+                        <p>（此處預留給歐洲場的簡介內容...等待資料輸入）</p>
+                    </div>
+                    <a href="#" class="register-btn">立即報名歐洲場</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="usa" class="country-section">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="photo-frame-wrapper flag-border-usa">
+                    <div class="flow-light-bg"></div>
+                    <div class="mask-layer"></div>
+                    <div class="photo-container">
+                        <img src="path-to-usa-image.jpg" alt="JBC USA" class="main-photo">
+                    </div>
+                </div>
+
+                <div class="text-content">
+                    <h2 class="country-title"><span>USA</span> 世界總決賽</h2>
+                    <div class="desc-placeholder">
+                        <p>（此處預留給美國場的簡介內容...等待資料輸入）</p>
+                    </div>
+                    <a href="#" class="register-btn">立即報名美國場</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="jbc-footer">
+        <p>&copy; 2026 SPARK 臺灣智能程式科技教育推廣協會</p>
+    </footer>
+
+</body>
+</html>
