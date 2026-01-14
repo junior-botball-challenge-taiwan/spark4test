@@ -6,412 +6,491 @@
     <title>JBC 國際賽事 | SPARK 臺灣智能程式科技教育推廣協會</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <style>
-  /* --- 國際賽頁面全域設定 --- */
-html {
-    scroll-behavior: smooth; /* 點擊導覽列會平滑滾動 */
-}
+    <style>
+        /* --- 國際賽頁面全域設定 --- */
+        html {
+            scroll-behavior: smooth;
+        }
 
-.international-page {
-    background-color: #05050a;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+        .international-page {
+            background-color: #05050a;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-/* --- 1. 專屬導覽列 --- */
-.sub-navbar {
-    position: sticky;
-    top: 0;
-    background: rgba(10, 10, 20, 0.95);
-    border-bottom: 1px solid #00ffff;
-    padding: 15px 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-}
+        /* --- 1. 專屬導覽列 --- */
+        .sub-navbar {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 20, 0.95);
+            border-bottom: 1px solid #00ffff;
+            padding: 15px 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
 
-.sub-navbar .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-}
+        .sub-navbar .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
 
-.back-home {
-    color: #00ffff;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-    transition: 0.3s;
-}
+        .back-home {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
 
-.sub-navbar .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
+        .sub-navbar .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
 
-.sub-navbar .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: 0.3s;
-    position: relative;
-}
+        .sub-navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            position: relative;
+        }
 
-.sub-navbar .nav-links a:hover {
-    color: #ff00ff;
-    text-shadow: 0 0 10px #ff00ff;
-}
+        .sub-navbar .nav-links a:hover {
+            color: #ff00ff;
+            text-shadow: 0 0 10px #ff00ff;
+        }
 
-/* --- 2. 區塊佈局 --- */
-.page-header {
-    text-align: center;
-    padding: 80px 20px 40px;
-    background: radial-gradient(circle at center, #1a1a2e 0%, #05050a 100%);
-}
+        /* 語言切換按鈕樣式 */
+        .lang-switch-btn {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid #00ffff;
+            color: #00ffff;
+            padding: 5px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-left: 20px;
+        }
 
-.page-header h1 {
-    font-size: 3rem;
-    background: linear-gradient(to right, #00ffff, #ff00ff);
-    -webkit-background-clip: text;
-    color: transparent;
-    margin-bottom: 10px;
-}
+        .lang-switch-btn:hover {
+            background: #00ffff;
+            color: #000;
+        }
 
-.country-section {
-    padding: 80px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
+        /* --- 2. 區塊佈局 --- */
+        .page-header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            background: radial-gradient(circle at center, #1a1a2e 0%, #05050a 100%);
+        }
 
-.country-section.alt-bg {
-    background: rgba(255, 255, 255, 0.02); /* 讓奧地利場背景稍微不同 */
-}
+        .page-header h1 {
+            font-size: 3rem;
+            background: linear-gradient(to right, #00ffff, #ff00ff);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
 
-.content-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 60px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
+        .country-section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-/* 圖文互換 (電腦版) */
-.content-wrapper.reverse {
-    flex-direction: row-reverse;
-}
+        .country-section.alt-bg {
+            background: rgba(255, 255, 255, 0.02);
+        }
 
-/* 文字區域樣式 */
-.text-content {
-    flex: 1;
-}
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-.country-title {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: white;
-}
+        .content-wrapper.reverse {
+            flex-direction: row-reverse;
+        }
 
-.country-title span {
-    display: block;
-    font-size: 1rem;
-    color: #00ffff;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-}
+        .text-content {
+            flex: 1;
+        }
 
-.register-btn {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 12px 30px;
-    background: linear-gradient(45deg, #00ffff, #0088ff);
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+        .country-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
 
-.register-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-}
+        .country-title span {
+            display: block;
+            font-size: 1rem;
+            color: #00ffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
 
-/* --- 3. 核心特效：國旗色流水燈 + 破框 (沿用並修改自 Enjoy AI) --- */
-.photo-frame-wrapper {
-    flex: 1;
-    position: relative;
-    max-width: 500px;
-    aspect-ratio: 4 / 3; /* 設定相框比例 */
-    border-radius: 20px;
-    padding: 5px; /* 流水燈寬度 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    perspective: 1000px; /* 3D 深度 */
-}
+        .register-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: linear-gradient(45deg, #00ffff, #0088ff);
+            color: black;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-/* 流水燈動畫定義 */
-@property --angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-}
+        .register-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+        }
 
-.flow-light-bg {
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    animation: rotateBorder 3s linear infinite;
-    z-index: 0;
-}
+        /* --- 3. 核心特效：國旗色流水燈 --- */
+        .photo-frame-wrapper {
+            flex: 1;
+            position: relative;
+            max-width: 500px;
+            aspect-ratio: 4 / 3;
+            border-radius: 20px;
+            padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
 
-/* 遮罩層 (讓中間變黑，只露出邊框) */
-.mask-layer {
-    position: absolute;
-    inset: 5px; /* 這裡要跟 padding 一樣 */
-    background: #05050a; 
-    border-radius: 16px;
-    z-index: 1;
-}
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
 
-@keyframes rotateBorder {
-    to { --angle: 360deg; }
-}
+        .flow-light-bg {
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            animation: rotateBorder 3s linear infinite;
+            z-index: 0;
+        }
 
-/* --- 各國國旗配色 (Conic Gradients) --- */
+        .mask-layer {
+            position: absolute;
+            inset: 5px;
+            background: #05050a;
+            border-radius: 16px;
+            z-index: 1;
+        }
 
-/* 🇹🇭 泰國：紅白藍白紅 */
-.flag-border-thailand .flow-light-bg {
-    background: conic-gradient(from var(--angle), 
-        #ED1C24, #FFFFFF, #241D4F, #FFFFFF, #ED1C24, #ED1C24);
-}
+        @keyframes rotateBorder {
+            to { --angle: 360deg; }
+        }
 
-/* 🇦🇹 奧地利：紅白紅 */
-.flag-border-austria .flow-light-bg {
-    background: conic-gradient(from var(--angle), 
-        #ED2939, #FFFFFF, #ED2939, #ED2939);
-}
+        .flag-border-thailand .flow-light-bg {
+            background: conic-gradient(from var(--angle), #ED1C24, #FFFFFF, #241D4F, #FFFFFF, #ED1C24, #ED1C24);
+        }
 
-/* 🇺🇸 美國：藍白紅 (星條旗感) */
-.flag-border-usa .flow-light-bg {
-    background: conic-gradient(from var(--angle), 
-        #002868, #FFFFFF, #BF0A30, #002868);
-}
+        .flag-border-austria .flow-light-bg {
+            background: conic-gradient(from var(--angle), #ED2939, #FFFFFF, #ED2939, #ED2939);
+        }
 
-/* --- 破框浮出特效 --- */
-.photo-container {
-    position: relative;
-    width: 92%;
-    height: 92%;
-    z-index: 2;
-    transform-style: preserve-3d;
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+        .flag-border-usa .flow-light-bg {
+            background: conic-gradient(from var(--angle), #002868, #FFFFFF, #BF0A30, #002868);
+        }
 
-.main-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    filter: brightness(0.9);
-    transition: 0.5s;
-}
+        .photo-container {
+            position: relative;
+            width: 92%;
+            height: 92%;
+            z-index: 2;
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-/* Hover 觸發特效 */
-.photo-frame-wrapper:hover .photo-container {
-    transform: translateZ(60px) scale(1.05) translateY(-15px) rotateX(5deg);
-}
+        .main-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            filter: brightness(0.9);
+            transition: 0.5s;
+        }
 
-.photo-frame-wrapper:hover .main-photo {
-    filter: brightness(1.1);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-}
+        .photo-frame-wrapper:hover .photo-container {
+            transform: translateZ(60px) scale(1.05) translateY(-15px) rotateX(5deg);
+        }
 
-/* --- 響應式調整 --- */
-@media (max-width: 768px) {
-    .content-wrapper, .content-wrapper.reverse {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
-    }
-    
-    .sub-navbar .nav-links {
-        display: none; /* 手機版可能需要漢堡選單，暫時隱藏 */
-    }
-    
-    .photo-frame-wrapper {
-        width: 100%;
-    }
-}
-      /* 按鈕與提醒文字的容器 */
-.action-group {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* 置左對齊，如果是手機版可以改成 center */
-    gap: 10px;
-}
+        .photo-frame-wrapper:hover .main-photo {
+            filter: brightness(1.1);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        }
 
-/* 提醒文字樣式 */
-.enroll-notice {
-    font-size: 0.85rem;
-    color: #aaa; /* 淡淡的灰色 */
-    font-style: italic;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
+        .action-group {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
 
-/* 小圖示顏色 */
-.enroll-notice i {
-    color: #00ffff; /* 使用我們招牌的青藍色 */
-}
+        .enroll-notice {
+            font-size: 0.85rem;
+            color: #aaa;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
 
-/* 手機版自動置中 */
-@media (max-width: 768px) {
-    .action-group {
-        align-items: center;
-    }
-}
-  </style>
+        .enroll-notice i {
+            color: #00ffff;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper, .content-wrapper.reverse {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+            .sub-navbar .nav-links {
+                display: none;
+            }
+            .photo-frame-wrapper {
+                width: 100%;
+            }
+            .action-group {
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body class="international-page">
 
     <nav class="sub-navbar">
         <div class="nav-container">
-            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> 回首頁</a>
+            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> <span data-key="back-home">回首頁</span></a>
             <ul class="nav-links">
-                <li><a href="#thailand">🇹🇭 泰國場</a></li>
-                <li><a href="#austria">🇦🇹 歐洲場 (奧地利)</a></li>
-                <li><a href="#usa">🇺🇸 美國場</a></li>
+                <li><a href="#thailand" data-key="nav-thailand">🇹🇭 泰國場</a></li>
+                <li><a href="#austria" data-key="nav-austria">🇦🇹 歐洲場 (奧地利)</a></li>
+                <li><a href="#usa" data-key="nav-usa">🇺🇸 美國場</a></li>
+                <li><button class="lang-switch-btn" onclick="toggleLanguage()">EN / 中文</button></li>
             </ul>
         </div>
     </nav>
 
-   <header class="page-header">
-    <h1>JBC 2026 GLOBAL EVENTS</h1>
-    <p>跟著 SPARK 走向世界，挑戰頂尖好手</p>
-</header>
+    <header class="page-header">
+        <h1>JBC 2026 GLOBAL EVENTS</h1>
+        <p data-key="header-subtitle">跟著 SPARK 走向世界，挑戰頂尖好手</p>
+    </header>
 
-<section id="thailand" class="country-section">
-    <div class="container">
-        <div class="content-wrapper">
-            <div class="photo-frame-wrapper flag-border-thailand">
-                <div class="flow-light-bg"></div> 
-                <div class="mask-layer"></div>    
-                <div class="photo-container">
-                    <img src="path-to-thailand-image.jpg" alt="JBC Thailand" class="main-photo">
+    <section id="thailand" class="country-section">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="photo-frame-wrapper flag-border-thailand">
+                    <div class="flow-light-bg"></div> 
+                    <div class="mask-layer"></div>    
+                    <div class="photo-container">
+                        <img src="path-to-thailand-image.jpg" alt="JBC Thailand" class="main-photo">
+                    </div>
                 </div>
-            </div>
-            
-            <div class="text-content">
-                <h2 class="country-title"><span>Thailand</span> 亞洲公開賽</h2>
-                <div class="desc-placeholder">
-                   <p><strong>開啟國際賽事經驗的首選起點！</strong></p>
-                    <p>JBC 亞洲公開賽是東南亞最具規模的機器人盛會。在 SPARK 的領軍下，選手將與亞洲各國頂尖隊伍同場競技，在充滿挑戰與樂趣的氛圍中，累積珍貴的國際競賽資歷。</p>
-                    
-                    <p style="margin-top: 15px; color: #ffcc00; font-weight: bold;">【在微笑之國，開啟首場國際冒險】</p>
-                    <p style="font-size: 0.9rem; color: #bbb;">在曼谷這座充滿活力的城市，讓孩子在友善的國際舞台上建立自信，並在跨文化的技術交流中，學會用邏輯與世界交朋友。</p>
-                    
-                    <ul style="color: #ccc; margin-top: 15px; line-height: 1.8; list-style: none; padding-left: 0;">
-                        <li>📍 比賽地點：泰國 曼谷 </li>
-                        <li>📅 比賽日期：預計 2026/05/03</li>
-                        <li>💡 賽事亮點：亞洲菁英技術交流、實戰應變挑戰、國際獲獎機會</li>
-                     </ul>
-                </div>
-                <div class="action-group" style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px;">
-                    <a href="https://forms.gle/9B3oWu7SGPPze8Pc9" class="register-btn">立即報名泰國場</a>
-                    <p class="enroll-notice" style="font-size: 0.85rem; color: #aaa; display: flex; align-items: center; gap: 5px;">
-                        <i class="fas fa-info-circle" style="color: #00ffff;"></i> 本場次僅限參加過 2026 JBC 臺灣賽之選手報名。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="austria" class="country-section alt-bg">
-    <div class="container">
-        <div class="content-wrapper reverse"> 
-            <div class="photo-frame-wrapper flag-border-austria">
-                <div class="flow-light-bg"></div>
-                <div class="mask-layer"></div>
-                <div class="photo-container">
-                    <img src="path-to-austria-image.jpg" alt="JBC Austria" class="main-photo">
-                </div>
-            </div>
-
-            <div class="text-content">
-                <h2 class="country-title"><span>Austria</span> 歐洲決賽</h2>
                 
-                <div class="desc-placeholder">
-                    <p><strong>挑戰歐洲最高規格的科學競技場！</strong></p>
-                    <p>ECER 歐洲教育機器人會議不僅是一場競賽，更是讓學生站上國際舞台的「科學會議」。在奧地利這個音樂與科學交織的國度，SPARK 的選手將全程以英文發表研究成果，與歐洲頂尖好手深度交流。</p>
-                    
-                    <p style="margin-top: 15px; color: #00ffff; font-weight: bold;">【在音樂與科學之都，開啟國際視野】</p>
-                    <p style="font-size: 0.9rem; color: #bbb;">漫步於巴洛克建築風格的街道，感受莫札特故鄉的藝術氣息，並在嚴謹的歐洲工程教育中，培養「動手做、開口說、精準論證」的科學精神。</p>
-                    
-                    <ul style="color: #ccc; margin-top: 15px; line-height: 1.8; list-style: none; padding-left: 0;">
-                        <li>📍 比賽地點：奧地利 St. Pölten (聖帕爾滕)</li>
-                        <li>📅 比賽日期：2026/04/13 - 04/17</li>
-                        <li>💡 賽事亮點：跨國科學交流、全英文專題演講、歐洲文化深度體驗</li>
-                    </ul>
-                </div>
-
-                <div class="action-group" style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px;">
-                    <a href="https://forms.gle/xd1oDNAHEE24wdBt5" class="register-btn">立即報名歐洲場</a>
-                    <p class="enroll-notice" style="font-size: 0.85rem; color: #aaa; display: flex; align-items: center; gap: 5px;">
-                        <i class="fas fa-info-circle" style="color: #00ffff;"></i> 本場次僅限參加過 2026 JBC 臺灣賽之選手報名。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="usa" class="country-section">
-    <div class="container">
-        <div class="content-wrapper">
-            <div class="photo-frame-wrapper flag-border-usa">
-                <div class="flow-light-bg"></div>
-                <div class="mask-layer"></div>
-                <div class="photo-container">
-                    <img src="path-to-usa-image.jpg" alt="GCER USA" class="main-photo">
-                </div>
-            </div>
-
-            <div class="text-content">
-                <h2 class="country-title"><span>USA</span> 美國決賽</h2>
-                <div class="desc-placeholder">
-                    <p><strong>站上全球機器人競技的最高殿堂！</strong></p>
-                    <p>GCER 是由 KIPR 舉辦的年度盛事，聚集了來自全球的精英隊伍。在 SPARK 的領軍下，選手將參與 JBC 全球決賽與 Botball 國際賽，與世界各地的科技少年同場競技。</p>
-                    <p style="margin-top: 15px; color: #ff0000; font-weight: bold;">【踏上科技夢想之地，開啟全球視野】</p>
-                    <p style="font-size: 0.9rem; color: #bbb;">深入美國之心諾曼 (Norman)，感受科技大國對創新的堅持。在這裡，孩子將學會用勇於突破的「矽谷精神」面對挑戰，並建立珍貴的全球友誼。</p>
-                    <ul style="color: #ccc; margin-top: 15px; line-height: 1.8; list-style: none; padding-left: 0;">
-                        <li>📍 比賽地點：美國 奧克拉荷馬州 諾曼 (Norman)</li>
-                        <li>📅 比賽日期：2026/07/14 - 07/18</li>
-                        <li>💡 賽事亮點：JBC 全球總決賽、國際 Botball 錦標賽</li>
-                    </ul>
-                </div>
-
-                <div class="action-group" style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px;">
-                    <a href="https://forms.gle/uGVWRGTXoC6YgELK7" class="register-btn">立即報名美國場</a>
-                    <p class="enroll-notice" style="font-size: 0.85rem; color: #aaa; display: flex; align-items: center; gap: 5px;">
-                        <i class="fas fa-info-circle" style="color: #00ffff;"></i> 本場次僅限參加過 2026 JBC 臺灣賽之選手報名。
-                    </p>
+                <div class="text-content">
+                    <h2 class="country-title"><span>Thailand</span> <span data-key="th-title">亞洲公開賽</span></h2>
+                    <div class="desc-placeholder">
+                        <p><strong data-key="th-p1">開啟國際賽事經驗的首選起點！</strong></p>
+                        <p data-key="th-p2">JBC 亞洲公開賽是東南亞最具規模的機器人盛會。在 SPARK 的領軍下，選手將與亞洲各國頂尖隊伍同場競技，在充滿挑戰與樂趣的氛圍中，累積珍貴的國際競賽資歷。</p>
+                        <p style="margin-top: 15px; color: #ffcc00; font-weight: bold;" data-key="th-p3">【在微笑之國，開啟首場國際冒險】</p>
+                        <p style="font-size: 0.9rem; color: #bbb;" data-key="th-p4">在曼谷這座充滿活力的城市，讓孩子在友善的國際舞台上建立自信，並在跨文化的技術交流中，學會用邏輯與世界交朋友。</p>
+                        <ul style="color: #ccc; margin-top: 15px; line-height: 1.8; list-style: none; padding-left: 0;">
+                            <li>📍 <span data-key="loc">比賽地點</span>：<span data-key="th-loc">泰國 曼谷</span></li>
+                            <li>📅 <span data-key="date">比賽日期</span>：<span data-key="th-date">預計 2026/05/03</span></li>
+                            <li>💡 <span data-key="highlight">賽事亮點</span>：<span data-key="th-highlight">亞洲菁英技術交流、實戰應變挑戰、國際獲獎機會</span></li>
+                        </ul>
+                    </div>
+                    <div class="action-group">
+                        <a href="https://forms.gle/9B3oWu7SGPPze8Pc9" class="register-btn" data-key="reg-th">立即報名泰國場</a>
+                        <p class="enroll-notice">
+                            <i class="fas fa-info-circle"></i> <span data-key="notice">本場次僅限參加過 2026 JBC 臺灣賽之選手報名。</span>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-    <footer class="jbc-footer">
+    </section>
+
+    <section id="austria" class="country-section alt-bg">
+        <div class="container">
+            <div class="content-wrapper reverse"> 
+                <div class="photo-frame-wrapper flag-border-austria">
+                    <div class="flow-light-bg"></div>
+                    <div class="mask-layer"></div>
+                    <div class="photo-container">
+                        <img src="path-to-austria-image.jpg" alt="JBC Austria" class="main-photo">
+                    </div>
+                </div>
+
+                <div class="text-content">
+                    <h2 class="country-title"><span>Austria</span> <span data-key="at-title">歐洲決賽</span></h2>
+                    <div class="desc-placeholder">
+                        <p><strong data-key="at-p1">挑戰歐洲最高規格的科學競技場！</strong></p>
+                        <p data-key="at-p2">ECER 歐洲教育機器人會議不僅是一場競賽，更是讓學生站上國際舞台的「科學會議」。在奧地利這個音樂與科學交織的國度，SPARK 的選手將全程以英文發表研究成果，與歐洲頂尖好手深度交流。</p>
+                        <p style="margin-top: 15px; color: #00ffff; font-weight: bold;" data-key="at-p3">【在音樂與科學之都，開啟國際視野】</p>
+                        <p style="font-size: 0.9rem; color: #bbb;" data-key="at-p4">漫步於巴洛克建築風格的街道，感受莫札特故鄉的藝術氣息，並在嚴謹的歐洲工程教育中，培養「動手做、開口說、精準論證」的科學精神。</p>
+                        <ul style="color: #ccc; margin-top: 15px; line-height: 1.8; list-style: none; padding-left: 0;">
+                            <li>📍 <span data-key="loc">比賽地點</span>：<span data-key="at-loc">奧地利 St. Pölten (聖帕爾滕)</span></li>
+                            <li>📅 <span data-key="date">比賽日期</span>：<span data-key="at-date">2026/04/13 - 04/17</span></li>
+                            <li>💡 <span data-key="highlight">賽事亮點</span>：<span data-key="at-highlight">跨國科學交流、全英文專題演講、歐洲文化深度體驗</span></li>
+                        </ul>
+                    </div>
+                    <div class="action-group">
+                        <a href="https://forms.gle/xd1oDNAHEE24wdBt5" class="register-btn" data-key="reg-at">立即報名歐洲場</a>
+                        <p class="enroll-notice">
+                            <i class="fas fa-info-circle"></i> <span data-key="notice">本場次僅限參加過 2026 JBC 臺灣賽之選手報名。</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="usa" class="country-section">
+        <div class="container">
+            <div class="content-wrapper">
+                <div class="photo-frame-wrapper flag-border-usa">
+                    <div class="flow-light-bg"></div>
+                    <div class="mask-layer"></div>
+                    <div class="photo-container">
+                        <img src="path-to-usa-image.jpg" alt="GCER USA" class="main-photo">
+                    </div>
+                </div>
+
+                <div class="text-content">
+                    <h2 class="country-title"><span>USA</span> <span data-key="us-title">美國決賽</span></h2>
+                    <div class="desc-placeholder">
+                        <p><strong data-key="us-p1">站上全球機器人競技的最高殿堂！</strong></p>
+                        <p data-key="us-p2">GCER 是由 KIPR 舉辦的年度盛事，聚集了來自全球的精英隊伍。在 SPARK 的領軍下，選手將參與 JBC 全球決賽與 Botball 國際賽，與世界各地的科技少年同場競技。</p>
+                        <p style="margin-top: 15px; color: #ff0000; font-weight: bold;" data-key="us-p3">【踏上科技夢想之地，開啟全球視野】</p>
+                        <p style="font-size: 0.9rem; color: #bbb;" data-key="us-p4">深入美國之心諾曼 (Norman)，感受科技大國對創新的堅持。在這裡，孩子將學會用勇於突破的「矽谷精神」面對挑戰，並建立珍貴的全球友誼。</p>
+                        <ul style="color: #ccc; margin-top: 15px; line-height: 1.8; list-style: none; padding-left: 0;">
+                            <li>📍 <span data-key="loc">比賽地點</span>：<span data-key="us-loc">美國 奧克拉荷馬州 諾曼 (Norman)</span></li>
+                            <li>📅 <span data-key="date">比賽日期</span>：<span data-key="us-date">2026/07/14 - 07/18</span></li>
+                            <li>💡 <span data-key="highlight">賽事亮點</span>：<span data-key="us-highlight">JBC 全球總決賽、國際 Botball 錦標賽</span></li>
+                        </ul>
+                    </div>
+                    <div class="action-group">
+                        <a href="https://forms.gle/uGVWRGTXoC6YgELK7" class="register-btn" data-key="reg-us">立即報名美國場</a>
+                        <p class="enroll-notice">
+                            <i class="fas fa-info-circle"></i> <span data-key="notice">本場次僅限參加過 2026 JBC 臺灣賽之選手報名。</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="jbc-footer" style="padding: 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
         <p>&copy; 2026 SPARK 臺灣智能程式科技教育推廣協會</p>
     </footer>
 
+    <script>
+        const translations = {
+            'zh-TW': {
+                'back-home': '回首頁',
+                'nav-thailand': '🇹🇭 泰國場',
+                'nav-austria': '🇦🇹 歐洲場 (奧地利)',
+                'nav-usa': '🇺🇸 美國場',
+                'header-subtitle': '跟著 SPARK 走向世界，挑戰頂尖好手',
+                'loc': '比賽地點', 'date': '比賽日期', 'highlight': '賽事亮點',
+                'notice': '本場次僅限參加過 2026 JBC 臺灣賽之選手報名。',
+                // Thailand
+                'th-title': '亞洲公開賽',
+                'th-p1': '開啟國際賽事經驗的首選起點！',
+                'th-p2': 'JBC 亞洲公開賽是東南亞最具規模的機器人盛會。在 SPARK 的領軍下，選手將與亞洲各國頂尖隊伍同場競技。',
+                'th-p3': '【在微笑之國，開啟首場國際冒險】',
+                'th-p4': '在曼谷這座充滿活力的城市，讓孩子建立自信，用邏輯與世界交朋友。',
+                'th-loc': '泰國 曼谷', 'th-date': '預計 2026/05/03', 'th-highlight': '亞洲菁英交流、實戰應變、國際獲獎機會',
+                'reg-th': '立即報名泰國場',
+                // Austria
+                'at-title': '歐洲決賽',
+                'at-p1': '挑戰歐洲最高規格的科學競技場！',
+                'at-p2': 'ECER 歐洲教育機器人會議是讓學生站上國際舞台的「科學會議」，全程以英文發表研究成果。',
+                'at-p3': '【在音樂與科學之都，開啟國際視野】',
+                'at-p4': '在巴洛克建築街道，感受莫札特故鄉的藝術，培養嚴謹的科學精神。',
+                'at-loc': '奧地利 St. Pölten', 'at-date': '2026/04/13 - 04/17', 'at-highlight': '跨國科學交流、全英文專題、歐洲文化體驗',
+                'reg-at': '立即報名歐洲場',
+                // USA
+                'us-title': '美國決賽',
+                'us-p1': '站上全球機器人競技的最高殿堂！',
+                'us-p2': 'GCER 聚集全球精英隊伍。選手將參與 JBC 全球決賽與 Botball 國際賽。',
+                'us-p3': '【踏上科技夢想之地，開啟全球視野】',
+                'us-p4': '深入美國之心諾曼，感受科技大國對創新的堅持，建立珍貴的全球友誼。',
+                'us-loc': '美國 奧克拉荷馬州 諾曼', 'us-date': '2026/07/14 - 07/18', 'us-highlight': 'JBC 全球總決賽、國際 Botball 錦標賽',
+                'reg-us': '立即報名美國場'
+            },
+            'en': {
+                'back-home': 'Home',
+                'nav-thailand': '🇹🇭 Thailand',
+                'nav-austria': '🇦🇹 Europe (Austria)',
+                'nav-usa': '🇺🇸 USA',
+                'header-subtitle': 'Follow SPARK to the world stage and challenge top elites.',
+                'loc': 'Location', 'date': 'Date', 'highlight': 'Highlights',
+                'notice': 'Only for contestants of 2026 JBC Taiwan.',
+                // Thailand
+                'th-title': 'Asia Open',
+                'th-p1': 'The premier starting point for international competition!',
+                'th-p2': 'JBC Asia Open is the largest robotics event in SE Asia. Led by SPARK, students compete with elite teams across Asia.',
+                'th-p3': '[Start Your International Adventure in the Land of Smiles]',
+                'th-p4': 'In vibrant Bangkok, build confidence and make friends with the world through logic.',
+                'th-loc': 'Bangkok, Thailand', 'th-date': 'Expected 2026/05/03', 'th-highlight': 'Elite Technical Exchange, Real-world Challenges, Global Recognition',
+                'reg-th': 'Register Now (Thailand)',
+                // Austria
+                'at-title': 'European Finals',
+                'at-p1': 'Challenge the highest standard of scientific arena in Europe!',
+                'at-p2': 'ECER is not just a competition, but a scientific conference where students present in English.',
+                'at-p3': '[Expand Horizons in the Capital of Music and Science]',
+                'at-p4': 'Walk through Baroque streets, experience Mozart\'s hometown, and master European engineering education.',
+                'at-loc': 'St. Pölten, Austria', 'at-date': '2026/04/13 - 04/17', 'at-highlight': 'International Exchange, English Presentations, Cultural Immersion',
+                'reg-at': 'Register Now (Europe)',
+                // USA
+                'us-title': 'Global Finals',
+                'us-p1': 'Stand on the ultimate global stage of robotics!',
+                'us-p2': 'GCER brings together elite teams worldwide for JBC Global Finals and Botball Championships.',
+                'us-p3': '[Step into the Land of Tech Dreams and Global Vision]',
+                'us-p4': 'Deep in the heart of Norman, feel the spirit of innovation and build global friendships.',
+                'us-loc': 'Norman, Oklahoma, USA', 'us-date': '2026/07/14 - 07/18', 'us-highlight': 'JBC Global Finals, International Botball Championships',
+                'reg-us': 'Register Now (USA)'
+            }
+        };
+
+        let currentLang = 'zh-TW';
+
+        function toggleLanguage() {
+            currentLang = (currentLang === 'zh-TW') ? 'en' : 'zh-TW';
+            updateContent();
+        }
+
+        function updateContent() {
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+            // 保持按鈕顯示相反語言或固定標記
+            document.querySelector('.lang-switch-btn').textContent = (currentLang === 'zh-TW') ? 'EN / 中文' : '中文 / EN';
+        }
+    </script>
 </body>
 </html>
