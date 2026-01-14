@@ -122,7 +122,6 @@
             display: block;
         }
 
-        /* 圖片浮起特效 */
         .history-card-img {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -131,168 +130,97 @@
             opacity: 1 !important;
             filter: drop-shadow(0 0 15px rgba(191, 0, 255, 0.6));
         }
-           /* --- 浮動動畫 --- */
-@keyframes logoFloat {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-25px); /* 向上漂浮的幅度 */
-    }
-}
-/* 1. 確保外層區塊基礎設定 */
-.contact-section {
-    width: 100%;
-    padding: 80px 0;
-    background-color: #05050a;
-    display: flex;
-    justify-content: center; /* 確保外層也試圖置中 */
-}
 
-/* 2. 修正容器：消除可能的左右偏移 */
-.contact-section .container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto; /* 絕對水平置中 */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* 讓標題與容器垂直對齊置中 */
-}
+        /* 語系切換器 CSS */
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(191, 0, 255, 0.4);
+            border-radius: 20px;
+            padding: 2px 10px;
+            background: rgba(0,0,0,0.3);
+            margin-left: 15px;
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        .lang-btn.active {
+            color: #bf00ff;
+            text-shadow: 0 0 8px #bf00ff;
+        }
+        .lang-btn:hover { color: #fff; }
 
-/* 3. 標題樣式 */
-.contact-section .section-title {
-    color: #ffffff;
-    font-size: 2.5rem;
-    margin-bottom: 50px;
-    letter-spacing: 3px;
-    text-align: center;
-}
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25px); }
+        }
 
-/* 4. 社群容器：修正置中問題的關鍵 */
-.social-container {
-    display: flex !important; /* 強制啟動 Flex */
-    justify-content: center !important; /* 強制內容水平置中 */
-    align-items: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    width: 100%; /* 確保撐滿容器寬度才能置中 */
-    margin: 0 auto;
-}
+        .contact-section { width: 100%; padding: 80px 0; background-color: #05050a; display: flex; justify-content: center; }
+        .contact-section .container { width: 100%; max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+        .contact-section .section-title { color: #ffffff; font-size: 2.5rem; margin-bottom: 50px; letter-spacing: 3px; text-align: center; }
+        .social-container { display: flex !important; justify-content: center !important; align-items: center; gap: 40px; flex-wrap: wrap; width: 100%; margin: 0 auto; }
+        .social-card { text-decoration: none; display: block; }
+        .card-inner { width: 140px; padding: 25px 15px; background: rgba(255, 255, 255, 0.05); border: 2px solid #00ffff; border-radius: 15px; display: flex; flex-direction: column; align-items: center; gap: 15px; position: relative; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .social-card.facebook .card-inner { border-color: #00ffff; }
+        .social-card.instagram .card-inner { border-color: #ff00ff; }
+        .social-card.threads .card-inner { border-color: #00ffff; }
+        .social-card:hover .card-inner { transform: translateY(-15px) scale(1.05); background: rgba(255, 255, 255, 0.1); }
+        .social-card.facebook:hover .card-inner { box-shadow: 0 10px 30px rgba(0, 255, 255, 0.6); border-color: #ffffff; }
+        .social-card.instagram:hover .card-inner { box-shadow: 0 10px 30px rgba(255, 0, 255, 0.6); border-color: #ffffff; }
+        .social-card.threads:hover .card-inner { box-shadow: 0 10px 30px rgba(0, 255, 255, 0.6); border-color: #ffffff; }
+        .icon-box { width: 60px; height: 60px; display: flex; justify-content: center; align-items: center; }
+        .social-icon { width: 100%; height: auto; filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
+        .social-label { color: #ffffff; font-weight: bold; font-size: 1rem; letter-spacing: 1px; }
 
-/* 5. 社群卡片基礎（隱藏 A 標籤預設樣式） */
-.social-card {
-    text-decoration: none;
-    display: block;
-}
-
-/* 6. 卡片內部框線與排版（加入漂浮效果基礎） */
-.card-inner {
-    width: 140px;
-    padding: 25px 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid #00ffff; /* 預設藍色 */
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 讓漂浮更生動 */
-}
-
-/* 7. 分別指定邊框顏色 */
-.social-card.facebook .card-inner { border-color: #00ffff; }
-.social-card.instagram .card-inner { border-color: #ff00ff; }
-.social-card.threads .card-inner { border-color: #00ffff; }
-
-/* 8. 漂浮發光效果 (Hover) */
-.social-card:hover .card-inner {
-    transform: translateY(-15px) scale(1.05); /* 向上漂浮更多 */
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* Facebook 藍色發光 */
-.social-card.facebook:hover .card-inner {
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.6);
-    border-color: #ffffff; /* 觸碰時邊框變白增加亮度 */
-}
-
-/* Instagram 桃紅發光 */
-.social-card.instagram:hover .card-inner {
-    box-shadow: 0 10px 30px rgba(255, 0, 255, 0.6);
-    border-color: #ffffff;
-}
-
-/* Threads 藍色發光 */
-.social-card.threads:hover .card-inner {
-    box-shadow: 0 10px 30px rgba(0, 255, 255, 0.6);
-    border-color: #ffffff;
-}
-
-/* 9. 圖示與文字 */
-.icon-box {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.social-icon {
-    width: 100%;
-    height: auto;
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); /* 給圖標一點點光暈 */
-}
-
-.social-label {
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 1rem;
-    letter-spacing: 1px;
-}
-
-/* 10. 響應式：手機版 */
-@media (max-width: 768px) {
-    .social-container {
-        gap: 20px;
-    }
-    .card-inner {
-        width: 110px;
-    }
-}
+        @media (max-width: 768px) {
+            .social-container { gap: 20px; }
+            .card-inner { width: 110px; }
+        }
     </style>
 </head>
 <body>
 
     <div class="float-container">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCWdu1iHO9Pug2hOlTShbwxB-yet4KcqtIWsM9kNbu99OMbA/viewform" target="_blank" class="float-btn btn-purple rounded-l-lg">前往報名</a>
-        <a href="https://docs.google.com/document/d/1isL4PLwy8q3PvW-gpLOKPoVwIaVrX9-dNvwRcoZbD04/edit?tab=t.24zxd1dnbc7u#heading=h.enjhjnwujonh" target="_blank" class="float-btn btn-black rounded-l-lg">題庫專區</a>
-        <a href="https://drive.google.com/file/d/1VudJRDZ_wad32Aj7AVu6eWKcGRhvlxkp/view" target="_blank" class="float-btn btn-gold rounded-l-lg">報名簡章</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxvytPSXD5RrHeSOaig1WIfgM60Aj111frdGtY8n-epb0Rjw/viewform" target="_blank" class="float-btn btn-purple rounded-l-lg">匯款完成表單</a>
-        <a href="https://line.me/ti/g2/4KLjDA6pPbE8BBsQUPSQS2M3rLRNPWO0PVtz9A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="float-btn btn-gold rounded-l-lg">加入群組</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfCWdu1iHO9Pug2hOlTShbwxB-yet4KcqtIWsM9kNbu99OMbA/viewform" target="_blank" class="float-btn btn-purple rounded-l-lg" data-key="f-apply">前往報名</a>
+        <a href="https://docs.google.com/document/d/1isL4PLwy8q3PvW-gpLOKPoVwIaVrX9-dNvwRcoZbD04/edit?tab=t.24zxd1dnbc7u#heading=h.enjhjnwujonh" target="_blank" class="float-btn btn-black rounded-l-lg" data-key="f-qbank">題庫專區</a>
+        <a href="https://drive.google.com/file/d/1VudJRDZ_wad32Aj7AVu6eWKcGRhvlxkp/view" target="_blank" class="float-btn btn-gold rounded-l-lg" data-key="f-rules">報名簡章</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfxvytPSXD5RrHeSOaig1WIfgM60Aj111frdGtY8n-epb0Rjw/viewform" target="_blank" class="float-btn btn-purple rounded-l-lg" data-key="f-pay">匯款完成表單</a>
+        <a href="https://line.me/ti/g2/4KLjDA6pPbE8BBsQUPSQS2M3rLRNPWO0PVtz9A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="float-btn btn-gold rounded-l-lg" data-key="f-line">加入群組</a>
     </div>
 
     <nav class="fixed w-full top-0 z-[1100] bg-blue-950/95 backdrop-blur-md border-b border-blue-800/50 shadow-lg shadow-blue-900/20">
         <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-4 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
                 <img src="jbc-logo.png" alt="Logo" class="h-14 w-auto logo-original-glow">
-                <span class="text-lg md:text-xl font-bold tracking-tight text-white uppercase ml-2">Junior Botball Challenge Taiwan</span>
+                <span class="text-lg md:text-xl font-bold tracking-tight text-white uppercase ml-2" data-key="nav-title">Junior Botball Challenge Taiwan</span>
             </div>
             
             <div class="hidden md:flex space-x-8 text-sm font-medium tracking-widest uppercase items-center">
-                <a onclick="scrollToSection('home')" class="nav-link">首頁</a>
-                <a onclick="scrollToSection('news')" class="nav-link">活動公告</a>
-                <a onclick="scrollToSection('rules')" class="nav-link">競賽規則</a>
-                <a onclick="scrollToSection('history')" class="nav-link">歷屆賽事回顧</a>
-                <a onclick="scrollToSection('contact')" class="nav-link">聯絡我們</a>
-                <a href="international.html" class="nav-link">國外賽</a>
+                <a onclick="scrollToSection('home')" class="nav-link" data-key="nav-home">首頁</a>
+                <a onclick="scrollToSection('news')" class="nav-link" data-key="nav-news">活動公告</a>
+                <a onclick="scrollToSection('rules')" class="nav-link" data-key="nav-rules">競賽規則</a>
+                <a onclick="scrollToSection('history')" class="nav-link" data-key="nav-hist">歷屆賽事回顧</a>
+                <a onclick="scrollToSection('contact')" class="nav-link" data-key="nav-contact">聯絡我們</a>
+                <a href="international.html" class="nav-link" data-key="nav-intl">國外賽</a>
                 
                 <div class="relative dropdown group">
-                    <span class="nav-link">快速連結 ▼</span>
+                    <span class="nav-link" data-key="nav-link">快速連結 ▼</span>
                     <div class="dropdown-menu py-2">
-                        <a href="https://www.youtube.com/@Spark_Taiwan" target="_blank" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition">YouTube 頻道</a>
-                        <a href="https://www.facebook.com/search/top?q=積動城市樂高機器人教室" target="_blank" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition border-t border-blue-900/30">積動城市 FB</a>
+                        <a href="https://www.youtube.com/@Spark_Taiwan" target="_blank" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition" data-key="nav-yt">YouTube 頻道</a>
+                        <a href="https://www.facebook.com/search/top?q=積動城市樂高機器人教室" target="_blank" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition border-t border-blue-900/30" data-key="nav-fb">積動城市 FB</a>
                     </div>
+                </div>
+
+                <div class="lang-switcher">
+                    <button onclick="switchLang('zh')" id="btn-zh" class="lang-btn active">中</button>
+                    <span style="color: #444; margin: 0 4px;">|</span>
+                    <button onclick="switchLang('en')" id="btn-en" class="lang-btn">EN</button>
                 </div>
             </div>
         </div>
@@ -305,19 +233,19 @@
             <div class="max-w-3xl bg-blue-950/20 p-8 md:p-12 rounded-2xl backdrop-blur-sm border border-white/10">
                 <h1 class="text-5xl md:text-7xl font-bold mb-4 neon-purple tracking-tighter leading-tight">Junior<br>Botball Challenge</h1>
                 <div class="mt-4">
-                    <p class="text-xl md:text-3xl font-bold gold-text uppercase">2026 STEM 科技教育競賽</p>
-                    <p class="text-lg md:text-xl text-blue-100 font-light italic mt-1">讓台灣的科技教育與國際接軌</p>
+                    <p class="text-xl md:text-3xl font-bold gold-text uppercase" data-key="hero-sub">2026 STEM 科技教育競賽</p>
+                    <p class="text-lg md:text-xl text-blue-100 font-light italic mt-1" data-key="hero-slogan">讓台灣的科技教育與國際接軌</p>
                 </div>
                 <div class="info-box">
                     <div class="flex items-start mb-2">
                         <span class="text-purple-400 font-bold mr-3">[ TIME ]</span>
-                        <p class="text-white text-lg md:text-xl font-medium">2026年3月8日 (星期日)</p>
+                        <p class="text-white text-lg md:text-xl font-medium" data-key="hero-time">2026年3月8日 (星期日)</p>
                     </div>
                     <div class="flex items-start">
                         <span class="text-purple-400 font-bold mr-3">[ PLACE ]</span>
                         <div>
-                            <p class="text-white text-lg md:text-xl font-medium">葳格國際會議中心</p>
-                            <p class="text-gray-400 text-sm mt-1">台中市北屯區軍福十八路328號</p>
+                            <p class="text-white text-lg md:text-xl font-medium" data-key="hero-place">葳格國際會議中心</p>
+                            <p class="text-gray-400 text-sm mt-1" data-key="hero-addr">台中市北屯區軍福十八路328號</p>
                         </div>
                     </div>
                 </div>
@@ -327,26 +255,26 @@
 
     <section id="news" class="bg-[#020510] border-t border-blue-900/20">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-bold neon-purple mb-8">活動公告 / NEWS</h2>
+            <h2 class="text-4xl font-bold neon-purple mb-8" data-key="news-title">活動公告 / NEWS</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-blue-900/10 border-l-4 border-purple-600 p-6 rounded-r-lg">
-                    <h3 class="text-xl font-bold text-white mb-4 flex items-center">📅 2026/03/08 (日) 賽程安排</h3>
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center" data-key="news-sch-title">📅 2026/03/08 (日) 賽程安排</h3>
                     <div class="space-y-4">
                         <div class="flex justify-between border-b border-blue-900/30 pb-2">
                             <span class="text-purple-400 font-medium">09:00 - 12:15</span>
-                            <span class="text-gray-300 text-sm">國小、國中各組 (挑戰與頒獎)</span>
+                            <span class="text-gray-300 text-sm" data-key="news-morning">國小、國中各組 (挑戰與頒獎)</span>
                         </div>
                         <div class="flex justify-between border-b border-blue-900/30 pb-2">
                             <span class="text-purple-400 font-medium">13:30 - 17:30</span>
-                            <span class="text-gray-300 text-sm">啟蒙、入門、探索組 (挑戰與頒獎)</span>
+                            <span class="text-gray-300 text-sm" data-key="news-afternoon">啟蒙、入門、探索組 (挑戰與頒獎)</span>
                         </div>
                     </div>
                 </div>
                 <div class="bg-blue-900/10 border-l-4 border-yellow-500 p-6 rounded-r-lg">
-                    <h3 class="text-xl font-bold text-white mb-4 flex items-center">🏆 國際認證與晉級</h3>
+                    <h3 class="text-xl font-bold text-white mb-4 flex items-center" data-key="news-intl-title">🏆 國際認證與晉級</h3>
                     <ul class="text-gray-300 text-sm space-y-2">
-                        <li>• <strong class="text-yellow-500">未來工程師認證</strong>：達標具備國際賽資格。</li>
-                        <li>• <strong class="text-blue-400">GCER 世界賽</strong>：2026年7月於美國舉行。</li>
+                        <li data-key="news-cert">• 未來工程師認證：達標具備國際賽資格。</li>
+                        <li data-key="news-gcer">• GCER 世界賽：2026年7月於美國舉行。</li>
                     </ul>
                 </div>
             </div>
@@ -355,23 +283,23 @@
 
     <section id="rules" class="bg-black">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl font-bold neon-purple mb-12">競賽規則 / RULES</h2>
+            <h2 class="text-4xl font-bold neon-purple mb-12" data-key="rules-title">競賽規則 / RULES</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="rule-card">
-                    <h4 class="text-lg text-purple-400 font-bold mb-3">01. 組隊級別</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">啟蒙級 (6-8歲組隊) / 探索級 (8歲以下組隊) / 入門級 (2-3人組隊)。</p>
+                    <h4 class="text-lg text-purple-400 font-bold mb-3" data-key="rules-1-t">01. 組隊級別</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed" data-key="rules-1-d">啟蒙級 (6-8歲組隊) / 探索級 (8歲以下組隊) / 入門級 (2-3人組隊)。</p>
                 </div>
                 <div class="rule-card">
-                    <h4 class="text-lg text-purple-400 font-bold mb-3">02. 機器人規範</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">器材自備（建議樂高套件），符合各級別零件規定。</p>
+                    <h4 class="text-lg text-purple-400 font-bold mb-3" data-key="rules-2-t">02. 機器人規範</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed" data-key="rules-2-d">器材自備（建議樂高套件），符合各級別零件規定。</p>
                 </div>
                 <div class="rule-card">
-                    <h4 class="text-lg text-purple-400 font-bold mb-3">03. 現場挑戰</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">90分鐘多次測驗，包含現場抽題之「神秘題」。</p>
+                    <h4 class="text-lg text-purple-400 font-bold mb-3" data-key="rules-3-t">03. 現場挑戰</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed" data-key="rules-3-d">90分鐘多次測驗，包含現場抽題之「神秘題」。</p>
                 </div>
                 <div class="rule-card">
-                    <h4 class="text-lg text-purple-400 font-bold mb-3">04. 成績判定</h4>
-                    <p class="text-gray-400 text-xs leading-relaxed">依任務完成道具評分，認證達標獲國際證書。</p>
+                    <h4 class="text-lg text-purple-400 font-bold mb-3" data-key="rules-4-t">04. 成績判定</h4>
+                    <p class="text-gray-400 text-xs leading-relaxed" data-key="rules-4-d">依任務完成道具評分，認證達標獲國際證書。</p>
                 </div>
             </div>
         </div>
@@ -380,8 +308,8 @@
     <section id="history" class="bg-[#050010] py-20 border-t border-purple-900/20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold neon-purple mb-4">歷屆賽事回顧 / HISTORY</h2>
-                <p class="text-gray-400 max-w-2xl mx-auto italic">「每一段程式碼的背後，都是孩子解決問題的智慧；每一場賽事的瞬間，都是通往國際舞台的足跡。」</p>
+                <h2 class="text-4xl font-bold neon-purple mb-4" data-key="hist-title">歷屆賽事回顧 / HISTORY</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto italic" data-key="hist-quote">「每一段程式碼的背後，都是孩子解決問題的智慧；每一場賽事的瞬間，都是通往國際舞台的足跡。」</p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-10">
@@ -389,21 +317,20 @@
                     <div class="aspect-video bg-purple-950/50 flex items-center justify-center overflow-hidden rounded-t-2xl">
                         <img src="2025-recap.jpg" alt="2025 Recap" class="history-card-img w-full h-full object-cover opacity-60">
                         <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <span class="text-white font-bold tracking-widest text-xl bg-black/40 px-4 py-2 rounded border border-purple-500">2025: 突破自我</span>
+                            <span class="text-white font-bold tracking-widest text-xl bg-black/40 px-4 py-2 rounded border border-purple-500" data-key="hist-2025-tag">2025: 突破自我</span>
                         </div>
                     </div>
                     <div class="p-8">
                         <div class="flex items-center mb-4">
                             <span class="w-8 h-1 bg-purple-500 mr-3"></span>
-                            <h3 class="text-2xl font-bold text-white">2025 STEM 科技教育競賽</h3>
+                            <h3 class="text-2xl font-bold text-white" data-key="hist-2025-t">2025 STEM 科技教育競賽</h3>
                         </div>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            <strong class="text-purple-400">【夢想啟航，進軍世界】</strong><br>
-                            在葳格國際會議中心的璀璨燈光下，超過百支隊伍挑戰極限。我們見證了學生如何在壓力下冷靜修正程式，完成高難度的道具搬運。
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed" data-key="hist-2025-d">
+                            在葳格國際會議中心的璀璨燈光下，超過百支隊伍挑戰極限。我們見證了學生如何在壓力下冷靜修正程式。
                         </p>
                         <div class="flex space-x-4">
-                            <a href="https://www.facebook.com/watch/?v=1060979716010685" target="_blank" class="clickable-btn flex-1 text-center py-2 bg-transparent border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-600 hover:text-white transition text-xs font-bold">觀看紀錄長片 (FB)</a>
-                            <a href="https://www.youtube.com/watch?v=Lj8neYq1m5g" target="_blank" class="clickable-btn flex-1 text-center py-2 bg-purple-900/30 text-white rounded-lg hover:bg-purple-800 transition text-xs font-bold">精華影片 (YouTube)</a>
+                            <a href="..." target="_blank" class="clickable-btn flex-1 text-center py-2 bg-transparent border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-600 hover:text-white transition text-xs font-bold" data-key="hist-btn-fb">觀看紀錄長片 (FB)</a>
+                            <a href="..." target="_blank" class="clickable-btn flex-1 text-center py-2 bg-purple-900/30 text-white rounded-lg hover:bg-purple-800 transition text-xs font-bold" data-key="hist-btn-yt">精華影片 (YouTube)</a>
                         </div>
                     </div>
                 </div>
@@ -412,101 +339,117 @@
                     <div class="aspect-video bg-blue-950/50 flex items-center justify-center overflow-hidden rounded-t-2xl">
                         <img src="2024-recap.jpg" alt="2024 Recap" class="history-card-img w-full h-full object-cover opacity-60">
                         <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-                            <span class="text-white font-bold tracking-widest text-xl bg-black/40 px-4 py-2 rounded border border-blue-500">2024: 科技啟蒙</span>
+                            <span class="text-white font-bold tracking-widest text-xl bg-black/40 px-4 py-2 rounded border border-blue-500" data-key="hist-2024-tag">2024: 科技啟蒙</span>
                         </div>
                     </div>
                     <div class="p-8">
                         <div class="flex items-center mb-4">
                             <span class="w-8 h-1 bg-blue-500 mr-3"></span>
-                            <h3 class="text-2xl font-bold text-white">2024 JBC 挑戰賽</h3>
+                            <h3 class="text-2xl font-bold text-white" data-key="hist-2024-t">2024 JBC 挑戰賽</h3>
                         </div>
-                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                            <strong class="text-blue-400">【紮根創意，無限可能】</strong><br>
-                            作為許多選手的第一場機器人賽事，2024 年重點在於啟發與實作。每一場賽事都是孩子成長的足跡。快點擊下方影片，重溫那份最初的熱血！
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed" data-key="hist-2024-d">
+                            作為許多選手的第一場機器人賽事，2024 年重點在於啟發與實作。每一場賽事都是孩子成長的足跡。
                         </p>
                         <div class="flex space-x-4 relative z-50">
-                            <a href="https://www.youtube.com/watch?v=JrTGKeoTHWk" target="_blank" class="clickable-btn flex-1 text-center py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition text-xs font-bold shadow-lg shadow-blue-500/20">🔥 2024 精彩影片回顧</a>
-                            <a href="https://www.facebook.com/MBC.robot/posts/pfbid02nZoyioBi69f4ENCmAWmAtpwck1TjDVobm4iHpXh8LES24GqkhHRZL3UzLEzAzCQ1l" target="_blank" class="clickable-btn flex-1 text-center py-2 bg-blue-900/30 text-white rounded-lg hover:bg-blue-800 transition text-xs font-bold">粉專賽事報導</a>
+                            <a href="..." target="_blank" class="clickable-btn flex-1 text-center py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500 transition text-xs font-bold" data-key="hist-btn-2024">🔥 2024 精彩回顧</a>
+                            <a href="..." target="_blank" class="clickable-btn flex-1 text-center py-2 bg-blue-900/30 text-white rounded-lg hover:bg-blue-800 transition text-xs font-bold" data-key="hist-btn-fan">粉專賽事報導</a>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 text-center border-t border-white/10 pt-16">
-                <div><div class="text-3xl font-bold text-purple-500">200+</div><div class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest">累積參賽隊伍</div></div>
-                <div><div class="text-3xl font-bold text-blue-500">500+</div><div class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest">培訓選手數量</div></div>
-                <div><div class="text-3xl font-bold text-yellow-500">20+</div><div class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest">國際認證獲獎</div></div>
-                <div><div class="text-3xl font-bold text-green-500">100%</div><div class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest">教育熱忱投入</div></div>
+                <div><div class="text-3xl font-bold text-purple-500">200+</div><div class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest" data-key="stat-1">累積參賽隊伍</div></div>
+                <div><div class="text-3xl font-bold text-blue-500">500+</div><div class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest" data-key="stat-2">培訓選手數量</div></div>
+                <div><div class="text-3xl font-bold text-yellow-500">20+</div><div class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest" data-key="stat-3">國際認證獲獎</div></div>
+                <div><div class="text-3xl font-bold text-green-500">100%</div><div class="text-[10px] text-gray-500 mt-1 uppercase tracking-widest" data-key="stat-4">教育熱忱投入</div></div>
             </div>
         </div>
-      <section id="contact" class="contact-section">
-    <div class="container">
-        <h2 class="section-title">聯絡我們</h2>
-        
-        <div class="social-container">
-            
-            <a href="https://www.facebook.com/BotballTaiwan/" target="_blank" class="social-card facebook">
-                <div class="card-inner">
-                    <div class="icon-box">
-                        <img src="path-to-your-fb-icon.png" alt="Facebook" class="social-icon">
-                    </div>
-                    <span class="social-label">Facebook</span>
-                </div>
-            </a>
-
-            <a href="https://www.instagram.com/jbc__taiwan/?igsh=anFsajU5M3FsNG53&utm_source=qr#" target="_blank" class="social-card instagram">
-                <div class="card-inner">
-                    <div class="icon-box">
-                        <img src="path-to-your-ig-icon.png" alt="Instagram" class="social-icon">
-                    </div>
-                    <span class="social-label">Instagram</span>
-                </div>
-            </a>
-
-            <a href="https://www.threads.com/@jbc__taiwan?igshid=NTc4MTIwNjQ2YQ%3D%3D" target="_blank" class="social-card threads">
-                <div class="card-inner">
-                    <div class="icon-box">
-                        <img src="path-to-your-threads-icon.png" alt="Threads" class="social-icon">
-                    </div>
-                    <span class="social-label">Threads</span>
-                </div>
-            </a>
-
-        </div> </div> </section>
     </section>
-    <title>JBC 2026 Junior Botball Challenge | 臺灣智能程式科技教育推廣協會 SPARK</title>
-<meta name="description" content="2026 JBC (Junior Botball Challenge) 台灣區官方網站。由臺灣智能程式科技教育推廣協會 (SPARK) 主辦，推廣全球青少年自主性機器人挑戰賽，強化程式邏輯與實作能力。">
-<meta name="keywords" content="JBC 2026, Junior Botball Challenge, 機器人比賽, SPARK, 臺灣智能程式科技教育推廣協會, Botball 台灣, 程式邏輯教育, 自主機器人">
-<meta property="og:title" content="JBC 2026 Junior Botball Challenge | 啟發孩子未來的程式力">
-<meta property="og:description" content="獲取 JBC 2026 最新賽制與報名詳情，由 SPARK 帶領學子挑戰全球頂尖賽事。">
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title" data-key="contact-title">聯絡我們</h2>
+            <div class="social-container">
+                <a href="https://www.facebook.com/BotballTaiwan/" target="_blank" class="social-card facebook">
+                    <div class="card-inner">
+                        <div class="icon-box"><img src="path-to-your-fb-icon.png" alt="Facebook" class="social-icon"></div>
+                        <span class="social-label">Facebook</span>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/jbc__taiwan/" target="_blank" class="social-card instagram">
+                    <div class="card-inner">
+                        <div class="icon-box"><img src="path-to-your-ig-icon.png" alt="Instagram" class="social-icon"></div>
+                        <span class="social-label">Instagram</span>
+                    </div>
+                </a>
+                <a href="https://www.threads.com/@jbc__taiwan" target="_blank" class="social-card threads">
+                    <div class="card-inner">
+                        <div class="icon-box"><img src="path-to-your-threads-icon.png" alt="Threads" class="social-icon"></div>
+                        <span class="social-label">Threads</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
     <footer> 
-        <div class="spark-competition-footer" style="background-color: transparent; padding: 40px 20px; text-align: center; font-family: 'Microsoft JhengHei', sans-serif;">
-    
-    <hr style="border: 0; border-top: 1px solid rgba(0, 255, 255, 0.3); width: 80%; margin-bottom: 30px;">
-
-    <p style="color: #00ffff; font-weight: bold; margin-bottom: 25px; letter-spacing: 2px; text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);">
-        臺灣智能程式科技教育推廣協會 (SPARK) 系列賽事
-    </p>
-    
-    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-        <a href="https://global-robotics-games-taiwan.github.io/" style="text-decoration: none; color: #00ffff; border: 1px solid #00ffff; padding: 10px 22px; border-radius: 5px; transition: 0.3s; font-size: 14px; background: rgba(0, 255, 255, 0.05); box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);" onmouseover="this.style.backgroundColor='#00ffff'; this.style.color='#000'; this.style.boxShadow='0 0 20px #00ffff';" onmouseout="this.style.backgroundColor='rgba(0, 255, 255, 0.05)'; this.style.color='#00ffff'; this.style.boxShadow='0 0 8px rgba(0, 255, 255, 0.2)';">
-            GRG 2026 全球機器人運動會
-        </a>
-
-        <a href="https://enjoyai-taiwan.github.io/index.html" style="text-decoration: none; color: #00ffff; border: 1px solid #00ffff; padding: 10px 22px; border-radius: 5px; transition: 0.3s; font-size: 14px; background: rgba(0, 255, 255, 0.05); box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);" onmouseover="this.style.backgroundColor='#00ffff'; this.style.color='#000'; this.style.boxShadow='0 0 20px #00ffff';" onmouseout="this.style.backgroundColor='rgba(0, 255, 255, 0.05)'; this.style.color='#00ffff'; this.style.boxShadow='0 0 8px rgba(0, 255, 255, 0.2)';">
-            Enjoy AI 2026 人工智慧挑戰賽
-        </a>
-        
-    </div>
-    
-    <p style="font-size: 12px; color: rgba(0, 255, 255, 0.5); margin-top: 35px; letter-spacing: 1px;">
-        © 2026 臺灣智能程式科技教育推廣協會 (SPARK). All Rights Reserved.
-    </p>
-</div>
+        <div class="spark-competition-footer" style="background-color: transparent; padding: 40px 20px; text-align: center;">
+            <hr style="border: 0; border-top: 1px solid rgba(0, 255, 255, 0.3); width: 80%; margin: 0 auto 30px;">
+            <p style="color: #00ffff; font-weight: bold; margin-bottom: 25px; letter-spacing: 2px;" data-key="footer-spark">臺灣智能程式科技教育推廣協會 (SPARK) 系列賽事</p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="https://global-robotics-games-taiwan.github.io/" style="text-decoration: none; color: #00ffff; border: 1px solid #00ffff; padding: 10px 22px; border-radius: 5px; font-size: 14px;" data-key="f-grg">GRG 2026 全球機器人運動會</a>
+                <a href="https://enjoyai-taiwan.github.io/index.html" style="text-decoration: none; color: #00ffff; border: 1px solid #00ffff; padding: 10px 22px; border-radius: 5px; font-size: 14px;" data-key="f-enjoy">Enjoy AI 2026 人工智慧挑戰賽</a>
+            </div>
+            <p style="font-size: 12px; color: rgba(0, 255, 255, 0.5); margin-top: 35px;">© 2026 臺灣智能程式科技教育推廣協會 (SPARK). All Rights Reserved.</p>
+        </div>
     </footer>
 
     <script>
+        // --- 1. 翻譯內容辭典 ---
+        const translations = {
+            'zh': {
+                'nav-title': 'Junior Botball Challenge Taiwan',
+                'nav-home': '首頁', 'nav-news': '活動公告', 'nav-rules': '競賽規則', 'nav-hist': '歷屆賽事回顧', 'nav-contact': '聯絡我們', 'nav-intl': '國外賽', 'nav-link': '快速連結 ▼', 'nav-yt': 'YouTube 頻道', 'nav-fb': '積動城市 FB',
+                'f-apply': '前往報名', 'f-qbank': '題庫專區', 'f-rules': '報名簡章', 'f-pay': '匯款完成表單', 'f-line': '加入群組',
+                'hero-sub': '2026 STEM 科技教育競賽', 'hero-slogan': '讓台灣的科技教育與國際接軌', 'hero-time': '2026年3月8日 (星期日)', 'hero-place': '葳格國際會議中心', 'hero-addr': '台中市北屯區軍福十八路328號',
+                'news-title': '活動公告 / NEWS', 'news-sch-title': '📅 2026/03/08 (日) 賽程安排', 'news-morning': '國小、國中各組 (挑戰與頒獎)', 'news-afternoon': '啟蒙、入門、探索組 (挑戰與頒獎)', 'news-intl-title': '🏆 國際認證與晉級', 'news-cert': '• 未來工程師認證：達標具備國際賽資格。', 'news-gcer': '• GCER 世界賽：2026年7月於美國舉行。',
+                'rules-title': '競賽規則 / RULES', 'rules-1-t': '01. 組隊級別', 'rules-1-d': '啟蒙級 (6-8歲組隊) / 探索級 (8歲以下組隊) / 入門級 (2-3人組隊)。', 'rules-2-t': '02. 機器人規範', 'rules-2-d': '器材自備（建議樂高套件），符合各級別零件規定。', 'rules-3-t': '03. 現場挑戰', 'rules-3-d': '90分鐘多次測驗，包含現場抽題之「神秘題」。', 'rules-4-t': '04. 成績判定', 'rules-4-d': '依任務完成道具評分，認證達標獲國際證書。',
+                'hist-title': '歷屆賽事回顧 / HISTORY', 'hist-quote': '「每一段程式碼的背後，都是孩子解決問題的智慧；每一場賽事的瞬間，都是通往國際舞台的足跡。」', 'hist-2025-tag': '2025: 突破自我', 'hist-2025-t': '2025 STEM 科技教育競賽', 'hist-2025-d': '在葳格國際會議中心的璀璨燈光下，超過百支隊伍挑戰極限。我們見證了學生如何在壓力下冷靜修正程式。', 'hist-btn-fb': '觀看紀錄長片 (FB)', 'hist-btn-yt': '精華影片 (YouTube)', 'hist-2024-tag': '2024: 科技啟蒙', 'hist-2024-t': '2024 JBC 挑戰賽', 'hist-2024-d': '作為許多選手的第一場機器人賽事，2024 年重點在於啟發與實作。', 'hist-btn-2024': '🔥 2024 精彩回顧', 'hist-btn-fan': '粉專賽事報導',
+                'stat-1': '累積參賽隊伍', 'stat-2': '培訓選手數量', 'stat-3': '國際認證獲獎', 'stat-4': '教育熱忱投入',
+                'contact-title': '聯絡我們', 'footer-spark': '臺灣智能程式科技教育推廣協會 (SPARK) 系列賽事', 'f-grg': 'GRG 2026 全球機器人運動會', 'f-enjoy': 'Enjoy AI 2026 人工智慧挑戰賽'
+            },
+            'en': {
+                'nav-title': 'Junior Botball Challenge Taiwan',
+                'nav-home': 'HOME', 'nav-news': 'NEWS', 'nav-rules': 'RULES', 'nav-hist': 'HISTORY', 'nav-contact': 'CONTACT', 'nav-intl': 'GLOBAL', 'nav-link': 'LINKS ▼', 'nav-yt': 'YouTube Channel', 'nav-fb': 'SPARK FB',
+                'f-apply': 'Apply Now', 'f-qbank': 'Q&A Bank', 'f-rules': 'Brochure', 'f-pay': 'Payment Form', 'f-line': 'Join Group',
+                'hero-sub': '2026 STEM TECHNOLOGY COMPETITION', 'hero-slogan': 'Connecting Taiwan\'s tech education with the world', 'hero-time': 'March 8, 2026 (Sunday)', 'hero-place': 'Wagor Convention Center', 'hero-addr': 'No. 328, Junfu 18th Rd., Taichung City',
+                'news-title': 'EVENTS / NEWS', 'news-sch-title': '📅 2026/03/08 Schedule', 'news-morning': 'Elementary & Junior High Groups', 'news-afternoon': 'Discovery, Entry & Explorer Groups', 'news-intl-title': '🏆 International Certification', 'news-cert': '• Future Engineer: Qualified for international games.', 'news-gcer': '• GCER World: July 2026 in the USA.',
+                'rules-title': 'Rules / RULES', 'rules-1-t': '01. Categories', 'rules-1-d': 'Discovery (Ages 6-8) / Explorer (Under 8) / Entry (2-3 per team).', 'rules-2-t': '02. Robot Specs', 'rules-2-d': 'Bring your own kit (LEGO recommended), follow category rules.', 'rules-3-t': '03. Live Challenge', 'rules-3-d': '90-min test including a live "Mystery Task".', 'rules-4-t': '04. Scoring', 'rules-4-d': 'Based on task completion for international certificates.',
+                'hist-title': 'History / HISTORY', 'hist-quote': '"Behind every line of code is a child\'s wisdom; every moment in a race is a footprint to the world stage."', 'hist-2025-tag': '2025: Breaking Limits', 'hist-2025-t': '2025 STEM Education Contest', 'hist-2025-d': 'Over 100 teams challenged their limits under the bright lights of Wagor Center.', 'hist-btn-fb': 'Full Documentary (FB)', 'hist-btn-yt': 'Highlights (YouTube)', 'hist-2024-tag': '2024: Tech Initiation', 'hist-2024-t': '2024 JBC Challenge', 'hist-2024-d': 'The 2024 focus was on inspiration and hands-on practice for new players.', 'hist-btn-2024': '🔥 2024 Highlights', 'hist-btn-fan': 'News Report',
+                'stat-1': 'Accumulated Teams', 'stat-2': 'Trained Students', 'stat-3': 'Global Awards', 'stat-4': 'Educational Passion',
+                'contact-title': 'Contact Us', 'footer-spark': 'SPARK Association Series Events', 'f-grg': 'GRG 2026 Global Robotics Games', 'f-enjoy': 'Enjoy AI 2026 AI Challenge'
+            }
+        };
+
+        // --- 2. 切換邏輯 (核心功能) ---
+        function switchLang(lang) {
+            // 切換按鈕樣式
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${lang}`).classList.add('active');
+
+            // 根據 data-key 尋找並替換文字
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            // 存儲偏好
+            localStorage.setItem('jbc-lang', lang);
+        }
+
+        // --- 3. 平滑捲動邏輯 (完全保留) ---
         function scrollToSection(id) {
             const element = document.getElementById(id);
             if (element) {
@@ -515,6 +458,12 @@
                 window.history.pushState("", "", "/");
             }
         }
+
+        // --- 4. 初始化 ---
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('jbc-lang') || 'zh';
+            switchLang(savedLang);
+        });
     </script>
 </body>
 </html>
