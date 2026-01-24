@@ -232,37 +232,37 @@
         <a href="https://line.me/ti/g2/4KLjDA6pPbE8BBsQUPSQS2M3rLRNPWO0PVtz9A?utm_source=invitation&utm_medium=link_copy&utm_campaign=default" target="_blank" class="float-btn btn-gold rounded-l-lg" data-key="f-line">加入群組</a>
     </div>
 
-    <nav class="fixed w-full top-0 z-[1100] bg-blue-950/95 backdrop-blur-md border-b border-blue-800/50 shadow-lg shadow-blue-900/20">
-        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-4 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-                <img src="jbc-logo.png" alt="Logo" class="h-14 w-auto logo-original-glow">
-                <span class="text-lg md:text-xl font-bold tracking-tight text-white uppercase ml-2" data-key="nav-title">Junior Botball Challenge Taiwan</span>
-            </div>
+   <nav class="fixed w-full top-0 z-[1100] bg-blue-950/95 backdrop-blur-md border-b border-blue-800/50 shadow-lg shadow-blue-900/20">
+    <div class="max-w-[95%] mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center space-x-3 cursor-pointer flex-shrink-0" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+            <img src="jbc-logo.png" alt="Logo" class="h-12 md:h-14 w-auto logo-original-glow">
+            <span class="text-base md:text-lg font-bold tracking-tight text-white uppercase whitespace-nowrap" data-key="nav-title">Junior Botball Challenge Taiwan</span>
+        </div>
+        
+        <div class="hidden xl:flex space-x-4 2xl:space-x-6 text-sm font-medium tracking-widest uppercase items-center flex-nowrap ml-4">
+            <a onclick="scrollToSection('home')" class="nav-link whitespace-nowrap" data-key="nav-home">首頁</a>
+            <a onclick="scrollToSection('news')" class="nav-link whitespace-nowrap" data-key="nav-news">活動公告</a>
+            <a onclick="scrollToSection('rules')" class="nav-link whitespace-nowrap" data-key="nav-rules">競賽規則</a>
+            <a onclick="scrollToSection('history')" class="nav-link whitespace-nowrap" data-key="nav-hist">歷屆賽事回顧</a>
+            <a onclick="scrollToSection('contact')" class="nav-link whitespace-nowrap" data-key="nav-contact">聯絡我們</a>
+            <a href="international.html" class="nav-link whitespace-nowrap" data-key="nav-intl">國外賽</a>
             
-            <div class="hidden md:flex space-x-8 text-sm font-medium tracking-widest uppercase items-center">
-                <a onclick="scrollToSection('home')" class="nav-link" data-key="nav-home">首頁</a>
-                <a onclick="scrollToSection('news')" class="nav-link" data-key="nav-news">活動公告</a>
-                <a onclick="scrollToSection('rules')" class="nav-link" data-key="nav-rules">競賽規則</a>
-                <a onclick="scrollToSection('history')" class="nav-link" data-key="nav-hist">歷屆賽事回顧</a>
-                <a onclick="scrollToSection('contact')" class="nav-link" data-key="nav-contact">聯絡我們</a>
-                <a href="international.html" class="nav-link" data-key="nav-intl">國外賽</a>
-                
-                <div class="relative dropdown group">
-                    <span class="nav-link" data-key="nav-link">快速連結 ▼</span>
-                    <div class="dropdown-menu py-2">
-                        <a href="https://www.youtube.com/@Spark_Taiwan" target="_blank" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition" data-key="nav-yt">YouTube 頻道</a>
-                        <a href="https://www.facebook.com/search/top?q=積動城市樂高機器人教室" target="_blank" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition border-t border-blue-900/30" data-key="nav-fb">積動城市 FB</a>
-                    </div>
+            <div class="relative dropdown group flex-shrink-0">
+                <span class="nav-link whitespace-nowrap" data-key="nav-link">快速連結 ▼</span>
+                <div class="dropdown-menu py-2">
+                    <a href="https://www.youtube.com/@Spark_Taiwan" target="_blank" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition" data-key="nav-yt">YouTube 頻道</a>
+                    <a href="https://www.facebook.com/search/top?q=積動城市樂高機器人教室" target="_blank" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition border-t border-blue-900/30" data-key="nav-fb">積動城市 FB</a>
                 </div>
+            </div>
 
-                <div class="lang-switcher">
-                    <button onclick="switchLang('zh')" id="btn-zh" class="lang-btn active">中</button>
-                    <span style="color: #444; margin: 0 4px;">|</span>
-                    <button onclick="switchLang('en')" id="btn-en" class="lang-btn">EN</button>
-                </div>
+            <div class="lang-switcher flex flex-row items-center flex-shrink-0 bg-white/5 px-2 py-1 rounded-full border border-white/10">
+                <button onclick="switchLang('zh')" id="btn-zh" class="lang-btn active text-xs">中</button>
+                <span style="color: #444; margin: 0 4px;">|</span>
+                <button onclick="switchLang('en')" id="btn-en" class="lang-btn text-xs">EN</button>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <section id="home" class="hero-section p-0 overflow-hidden">
         <img src="unnamed.jpg" alt="Background" class="hero-img-full">
