@@ -216,32 +216,79 @@
         .social-icon { width: 100%; height: auto; filter: drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
         .social-label { color: #ffffff; font-weight: bold; font-size: 1rem; letter-spacing: 1px; }
 
-      /* 當螢幕寬度小於 768px 時執行 */
-@media (max-width: 768px) {
-    /* 隱藏原本的橫向文字選單 */
-    .nav-links {
+/* --- 手機版優化 --- */
+@media (max-width: 1280px) {
+    /* 讓原本隱藏的導覽選單在激活時變為垂直佈局 */
+    .nav-links-mobile {
         display: none; 
         flex-direction: column;
         position: absolute;
-        top: 60px;
+        top: 100%; /* 緊貼導覽列下方 */
         left: 0;
         width: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        text-align: center;
+        background: rgba(2, 6, 23, 0.98); /* 深藍色背景 */
+        padding: 20px 0;
+        border-bottom: 2px solid #bf00ff;
+        z-index: 1000;
     }
 
-    /* 當選單被激活時顯示 (搭配 JS) */
-    .nav-links.active {
+    .nav-links-mobile.active {
         display: flex;
     }
 
-    /* 顯示漢堡選單按鈕 (需在 HTML 加入此元素) */
-    .hamburger {
+    /* 隱藏桌面版的快速連結下拉選單，改為直接顯示 */
+    .dropdown-menu {
+        position: static;
+        width: 100%;
         display: block;
-        cursor: pointer;
-        padding: 15px;
+        background: transparent;
+        border: none;
     }
 }
+
+@media (max-width: 768px) {
+    /* 縮小右側浮動按鈕，避免擋住文字 */
+    .float-container {
+        right: -5px;
+        gap: 5px;
+        transform: translateY(-50%) scale(0.85);
+        transform-origin: right center;
+    }
+    
+    .float-btn {
+        padding: 1.2vh 8px;
+        font-size: 11px;
+    }
+
+    /* 調整 Hero Section 文字大小避免溢出 */
+    .hero-section h1 {
+        font-size: 2.5rem;
+        line-height: 1.1;
+    }
+}
+
+/* 漢堡按鈕動畫樣式 */
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+    transition: 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+        #nav-menu {
+    transition: right 0.3s ease-in-out;
+}
+
+/* 漢堡按鈕變形微調 */
+.rotate-45 { transform: rotate(45deg); }
+.translate-y-2 { transform: translateY(8px); }
+.-rotate-45 { transform: rotate(-45deg); }
+.-translate-y-2 { transform: translateY(-8px); }
+.opacity-0 { opacity: 0; }
     </style>
 </head>
 <body>
@@ -257,21 +304,28 @@
    <nav class="fixed w-full top-0 z-[1100] bg-blue-950/95 backdrop-blur-md border-b border-blue-800/50 shadow-lg shadow-blue-900/20">
     <div class="max-w-[95%] mx-auto px-4 py-3 flex justify-between items-center">
         <div class="flex items-center space-x-3 cursor-pointer flex-shrink-0" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-            <img src="jbc-logo.png" alt="Logo" class="h-12 md:h-14 w-auto logo-original-glow">
+            <img src="jbc-logo.png" alt="Logo" class="h-10 md:h-14 w-auto logo-original-glow">
             <span class="text-base md:text-lg font-bold tracking-tight text-white uppercase whitespace-nowrap" data-key="nav-title">Junior Botball Challenge Taiwan</span>
         </div>
         
-        <div class="hidden xl:flex space-x-4 2xl:space-x-6 text-sm font-medium tracking-widest uppercase items-center flex-nowrap ml-4">
-            <a onclick="scrollToSection('home')" class="nav-link whitespace-nowrap" data-key="nav-home">首頁</a>
-            <a onclick="scrollToSection('news')" class="nav-link whitespace-nowrap" data-key="nav-news">活動公告</a>
-            <a onclick="scrollToSection('rules')" class="nav-link whitespace-nowrap" data-key="nav-rules">競賽規則</a>
-            <a onclick="scrollToSection('history')" class="nav-link whitespace-nowrap" data-key="nav-hist">歷屆賽事回顧</a>
-            <a onclick="scrollToSection('contact')" class="nav-link whitespace-nowrap" data-key="nav-contact">聯絡我們</a>
+        <button id="menu-toggle" class="xl:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 focus:outline-none z-[1200]">
+            <span class="block w-6 h-0.5 bg-white transition-transform duration-300" id="line1"></span>
+            <span class="block w-6 h-0.5 bg-white transition-opacity duration-300" id="line2"></span>
+            <span class="block w-6 h-0.5 bg-white transition-transform duration-300" id="line3"></span>
+        </button>
+
+        <div id="nav-menu" class="fixed xl:static top-0 right-[-100%] xl:right-0 w-3/4 xl:w-auto h-screen xl:h-auto bg-blue-950 xl:bg-transparent flex flex-col xl:flex-row items-center justify-start xl:justify-center pt-24 xl:pt-0 transition-all duration-300 ease-in-out xl:flex space-y-6 xl:space-y-0 xl:space-x-4 2xl:space-x-6 text-sm font-medium tracking-widest uppercase ml-4 shadow-2xl xl:shadow-none border-l border-blue-800/50 xl:border-none">
+            
+            <a onclick="scrollToAndClose('home')" class="nav-link whitespace-nowrap" data-key="nav-home">首頁</a>
+            <a onclick="scrollToAndClose('news')" class="nav-link whitespace-nowrap" data-key="nav-news">活動公告</a>
+            <a onclick="scrollToAndClose('rules')" class="nav-link whitespace-nowrap" data-key="nav-rules">競賽規則</a>
+            <a onclick="scrollToAndClose('history')" class="nav-link whitespace-nowrap" data-key="nav-hist">歷屆賽事回顧</a>
+            <a onclick="scrollToAndClose('contact')" class="nav-link whitespace-nowrap" data-key="nav-contact">聯絡我們</a>
             <a href="international.html" class="nav-link whitespace-nowrap" data-key="nav-intl">國外賽</a>
             
-            <div class="relative dropdown group flex-shrink-0">
-                <span class="nav-link whitespace-nowrap" data-key="nav-link">快速連結 ▼</span>
-                <div class="dropdown-menu py-2">
+            <div class="relative dropdown group flex-shrink-0 text-center">
+                <span class="nav-link whitespace-nowrap cursor-pointer" data-key="nav-link">快速連結 ▼</span>
+                <div class="dropdown-menu py-2 xl:absolute">
                     <a href="https://www.youtube.com/@Spark_Taiwan" target="_blank" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition" data-key="nav-yt">YouTube 頻道</a>
                     <a href="https://www.facebook.com/search/top?q=積動城市樂高機器人教室" target="_blank" class="block px-4 py-3 text-xs text-white hover:bg-purple-600/40 transition border-t border-blue-900/30" data-key="nav-fb">積動城市 FB</a>
                 </div>
@@ -524,6 +578,36 @@
             const savedLang = localStorage.getItem('jbc-lang') || 'zh';
             switchLang(savedLang);
         });
+        // --- 手機選單開關邏輯 ---
+const menuToggle = document.getElementById('menu-toggle');
+const navMenu = document.getElementById('nav-menu');
+const line1 = document.getElementById('line1');
+const line2 = document.getElementById('line2');
+const line3 = document.getElementById('line3');
+
+menuToggle.addEventListener('click', () => {
+    // 切換選單位置 (由右側滑入)
+    navMenu.classList.toggle('right-0');
+    navMenu.classList.toggle('right-[-100%]');
+    
+    // 漢堡按鈕動畫 (變為 X)
+    line1.classList.toggle('rotate-45');
+    line1.classList.toggle('translate-y-2');
+    line2.classList.toggle('opacity-0');
+    line3.classList.toggle('-rotate-45');
+    line3.classList.toggle('-translate-y-2');
+});
+
+// 當點擊選單連結後，自動關閉選單並捲動
+function scrollToAndClose(sectionId) {
+    // 先捲動
+    scrollToSection(sectionId);
+    
+    // 如果在手機版，則關閉選單
+    if (window.innerWidth < 1280) {
+        menuToggle.click();
+    }
+}
     </script>
 </body>
 </html>
