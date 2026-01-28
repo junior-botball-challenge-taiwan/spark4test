@@ -218,15 +218,40 @@
 
 /* --- 手機版優化 --- */
 @media (max-width: 1280px) {
-    /* 讓原本隱藏的導覽選單在激活時變為垂直佈局 */
+    /* 1. 確保導覽列容器不換行 (這部分要放進來) */
+    nav, .nav-container { 
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        flex-wrap: nowrap !important; 
+        padding: 0 15px !important;
+    }
+
+    /* 2. 限制標題寬度，防止擠壓漢堡按鈕 (這部分也要放進來) */
+    .nav-title, .logo-text, nav h1 {
+        flex: 1 !important; 
+        font-size: 1.1rem !important; /* 手機版建議再小一點點，1.1比較保險 */
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important; 
+        margin-right: 10px !important;
+        min-width: 0; /* Flexbox 下截斷文字的關鍵設定 */
+    }
+
+    /* 3. 漢堡按鈕絕對不能縮小 */
+    .hamburger-menu, .menu-btn, .navbar-toggler { 
+        flex-shrink: 0 !important; 
+    }
+
+    /* 4. 您原本的導覽選單垂直佈局邏輯 (維持不變) */
     .nav-links-mobile {
         display: none; 
         flex-direction: column;
         position: absolute;
-        top: 100%; /* 緊貼導覽列下方 */
+        top: 100%; 
         left: 0;
         width: 100%;
-        background: rgba(2, 6, 23, 0.98); /* 深藍色背景 */
+        background: rgba(2, 6, 23, 0.98); 
         padding: 20px 0;
         border-bottom: 2px solid #bf00ff;
         z-index: 1000;
@@ -236,7 +261,7 @@
         display: flex;
     }
 
-    /* 隱藏桌面版的快速連結下拉選單，改為直接顯示 */
+    /* 5. 快速連結下拉選單改為直接顯示 (維持不變) */
     .dropdown-menu {
         position: static;
         width: 100%;
@@ -245,9 +270,13 @@
         border: none;
     }
 }
-
 @media (max-width: 768px) {
-    /* 縮小右側浮動按鈕，避免擋住文字 */
+    /* 針對直向手機進一步縮小導覽列標題 */
+    .nav-title, .logo-text, nav h1 {
+        font-size: 14px !important; /* 讓 Junior Botball Challenge 文字變小 */
+        max-width: 60vw !important; /* 限制寬度不超過螢幕 60% */
+    }
+    /* 縮小右側浮動按鈕，避免擋住文字 */{
     .float-container {
         right: -5px;
         gap: 5px;
