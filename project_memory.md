@@ -7,3 +7,6 @@
 - 優化 index.html 與 international.html 的 SEO Meta、Canonical、Open Graph 與 Schema.org JSON-LD 結構化資料。
 - 擴充 README.md 提升 GitHub 搜尋曝光度。
 - Google Search Console 站長權限驗證通過，正式進入索引監控階段。
+
+## 2026-09-10
+- 更新首頁競賽日期至 2026/12/13，賽程組別納入高中組，GCER 世界賽調整為 8 月，同步更新中英辭典與 Event 結構化資料。
